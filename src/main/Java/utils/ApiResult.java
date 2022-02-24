@@ -5,24 +5,24 @@ import org.apache.commons.lang3.StringUtils;
 
 public class ApiResult {
 	
-    private final ResultCodeEnum reCorde;
+    private final Integer reCorde;
     private final Object data;
     private final String msg;
 
     private ApiResult(ResultCodeEnum reCode, Object data) {
-        this.reCorde = reCode;
+        this.reCorde = reCode.flag;
         this.data = data;
         this.msg = reCode.name();
     }
 
     private ApiResult(ResultCodeEnum reCode, String msg, Object data) {
-        this.reCorde = reCode;
+        this.reCorde = reCode.flag;
         this.data = data;
         this.msg = StringUtils.isBlank(msg) ? reCode.name() : msg;
     }
 
     public int getCode() {
-        return this.reCorde.flag;
+        return this.reCorde;
     }
 
     public String getMsg() {

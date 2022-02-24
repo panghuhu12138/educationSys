@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <!--echarts基础js!-->
+    <script type="text/javascript" src="../../js/echarts.js"></script>
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <!--echart主题js!-->
+    <!--echarts地图包js!-->
+    <script type="text/javascript" src="../jsonjs/建邺区.js"></script>
+    <script type="text/javascript">
+        $(window).resize(function () {
+            //图表容器宽高赋值
+            $("#tb").css("width", $(window).width());
+            $("#tb").css("height", $(window).height());
+        });
+        $(window).ready(function () {
+            $("#tb").css("width", $(window).width());
+            $("#tb").css("height", $(window).height());
+        });
+    </script>
+    <style type="text/css">
+        a.bt {
+            padding: 2px 20px;
+            border-radius: 20px;
+            border: 1px solid #07B4DE;
+            background-color: #043973;
+            font-size: 15px;
+            display: block;
+            position: absolute;
+            top: 10px;
+            left: 42.8%;
+            color: #07B4DE;
+            text-decoration: none;
+            z-index: 99999
+        }
+        a.bt:hover{
+            color: #fff;
+            border: 1px solid #fff;
+        }
+    </style>
+</head>
+
+<body style="margin:0;padding:0">
+    <a href="../njs_1.html" class="bt">返回市级</a>
+    <div id="tb"></div>
+    <script>
+        //echarts本身有个小问题，其图表容器必须 px 定义宽度高度，不可用百分比，用百分比就不能加载图表，也不能通过取值赋值的形式给图表容器赋值宽度高度
+        //这个方法在echart示例初始化前后做到了可取值来给图表容器赋值
+
+        var bt = document.getElementById('tb');
+        //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+        var resizebt = function () {
+            bt.style.width = window.innerWidth + 'px';
+            bt.style.height = window.innerHeight + 'px';
+        };
+        //设置容器高宽
+        resizebt();
+        // 基于准备好的dom，初始化echarts实例
+        var btchart = echarts.init(bt, 'halloween');
+        var option = {
+            tooltip: {
+                show: false,
+                trigger: 'item',
+                padding: [10, 15],
+                backgroundColor: '#fff',
+                formatter: '{a}</br>{b} {c} 家'
+            },
+            series: [{
+                name: '家庭农场',
+                type: 'map',
+                mapType: '建邺区',
+                zoom: 1.15,
+                top: '15%',
+                bottom: '7%',
+                data: [{
+                        name: '竹镇',
+                        value: 30
+                    },
+                    {
+                        name: '雨花台区',
+                        value: 17
+                    },
+                    {
+                        name: '玄武区',
+                        value: 22
+                    },
+                    {
+                        name: '溧水区',
+                        value: 11
+                    },
+                    {
+                        name: '江宁区',
+                        value: 13
+                    },
+                    {
+                        name: '栖霞区',
+                        value: 15
+                    },
+                    {
+                        name: '秦淮区',
+                        value: 18
+                    },
+                    {
+                        name: '建邺区',
+                        value: 21
+                    },
+                    {
+                        name: '鼓楼区',
+                        value: 24
+                    },
+                    {
+                        name: '六合区',
+                        value: 27
+                    },
+                    {
+                        name: '高淳区',
+                        value: 3
+                    },
+                ],
+                itemStyle: {
+                    normal: {
+                        areaColor: "#098fdc",
+                        borderColor: "#fff",
+                        borderWidth: 0.5
+                    },
+                    emphasis: {
+                        areaColor: "#dfb802",
+                        borderColor: "#ffffff",
+                        borderWidth: 0
+                    }
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        textStyle: {
+                            color: "#ffffff",
+                            fontSize: '90%',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    emphasis: {
+                        textStyle: {
+                            color: "#ffffff",
+                            fontSize: '90%',
+                            fontWeight: 'bold'
+                        }
+                    }
+                }
+            }]
+        }
+        btchart.setOption(option)
+        // btchart.on('click', function (param){
+        //     var selected = param.name;
+        //         if (selected) {
+        //             switch(selected){
+        //                 case '徐州市':
+        //                     location.href = "test3-1.html";
+        //                     break;
+        //                 case '常州市':
+        //                     location.href = "test3-2.html";
+        //                     break;
+        //                 default:
+        //                     break;
+        //             }
+
+        //         }
+        //   });
+        //用于使chart自适应高度和宽度
+        window.onresize = function () {
+            //重置容器高宽
+            resizebt();
+            btchart.resize();
+        };
+    </script>
+</body>
+
+</html>

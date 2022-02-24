@@ -1,0 +1,839 @@
+/* 文字换算 */
+@media all and (orientation:landscape) {
+
+  /* 横屏 */
+  html {
+    font-size: calc(100vw / 220.0);
+  }
+}
+
+body {
+  background: url(../imgs/bg.png) no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+/* 开始 */
+section {
+  width: 100%;
+  /* height: 100vh; */
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  height: 8.3rem;
+  background: url(../imgs/bt.png) no-repeat;
+  background-size: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.nav-main {
+  width: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  line-height: 7.5rem;
+  font-size: 3rem;
+  margin: auto;
+  font-weight: bolder;
+  color: #51dbff;
+  letter-spacing: 0.3rem;
+  position: absolute;
+  z-index: -1;
+  padding-left: 2.5%;
+}
+
+.nav-left {
+  width: 55rem;
+  height: 100%;
+  display: flex;
+  padding-top: 1.4rem;
+  justify-content: space-around;
+}
+
+.nav-left div {
+  width: 17.5rem;
+  height: 3.9rem;
+  background: url(../imgs/left\ 默认.png) no-repeat;
+  background-size: 100%;
+  text-align: center;
+  line-height: 3.9rem;
+  font-size: 1.6rem;
+  color: #2e9eff;
+}
+
+/* js切换class名 */
+.nav-left .nav-gtnc {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bolder;
+  background: url(../imgs/left\ 点击.png) no-repeat;
+  background-size: 100%;
+}
+
+.nav-left>div {
+  cursor: pointer;
+}
+
+.nav-right {
+  width: 37rem;
+  height: 100%;
+  background: url(../imgs/rt.png) no-repeat;
+  background-size: 100%;
+  background-position-y: 0.8rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-right div {
+  width: 13rem;
+  height: 4rem;
+  line-height: 7rem;
+}
+
+.nav-right div select {
+  width: 100%;
+  height: 4rem;
+  display: inline-block;
+  font-size: 1.7rem;
+  background: transparent;
+  border: none;
+  color: #03bbef;
+  font-weight: bolder;
+}
+
+.nav-right div select option {
+  font-size: 1.7rem;
+  background: #05225a;
+}
+
+/* 主体盒子布局 */
+/* 标题定位 */
+.header-left,
+.middle-top,
+.middle-bottom,
+.footer-left,
+.footer-main,
+.footer-right {
+  position: relative;
+}
+
+
+.footer-left p,
+.footer-right p {
+  height: 24rem;
+  margin-top: 4rem;
+}
+
+.footer-main p {
+  height: 25rem;
+  margin-top: 3rem;
+}
+
+.middle-top,
+.middle-bottom {
+  padding-top: 3rem;
+}
+
+.middle-top p,
+.middle-bottom p {
+  height: 25rem;
+}
+
+.main-one {
+  width: 100%;
+  height: 100%;
+}
+
+.main-one main {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2.2rem;
+}
+
+/* .main-one .main-nmhzs {
+  width: 75.35%;
+  float: right;
+} */
+
+/* 各模块标题 */
+.wotitle {
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  color: #51dbff;
+  font-size: 1.8rem;
+  font-weight: bolder;
+  letter-spacing: 0.3rem;
+}
+
+.wotitletwo {
+  /* top: -0.1rem; */
+}
+
+.header-left {
+  height: 64rem;
+  width: 44rem;
+  background: url(../imgs/left_two.png) no-repeat;
+  background-size: 100%;
+}
+
+/* 农民合作社 */
+.header-left-hzstitle {
+  background: url(../imgs/hzstitle.png) no-repeat;
+  background-size: 100%;
+}
+
+/* 农业龙头企业 */
+.header-left-nyltqytitle {
+  background: url(../imgs/nyltqytitle.png) no-repeat;
+  background-size: 100%;
+}
+
+.header-left ol {
+  height: 22.6rem;
+  width: 100%;
+  margin-top: 4.7rem;
+}
+
+.header-left ol li {
+  height: 4.9rem;
+  width: 100%;
+  margin-top: 1rem;
+  line-height: 4.9rem;
+  padding: 0 3rem;
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+/* 农民合作社 */
+.header-left-hzstitle ol {
+  margin-top: 4.8rem;
+  height: 16rem;
+}
+
+.header-left-hzstitle ol li {
+  height: 2.9rem;
+  line-height: 2.9rem;
+}
+
+.header-left-hzstitle ol li:last-child {
+  margin-top: 1.5rem;
+}
+
+/* 农业龙头企业 */
+.header-left-nyltqytitle ol {
+  height: 21rem;
+}
+
+.header-left ol li span,
+.heder-box h1 span {
+  width: 19rem;
+  float: right;
+  text-align: right;
+}
+
+.header-left ol li i,
+.heder-box h1 span i {
+  color: #39BCFD;
+  font-weight: bolder;
+  font-style: normal;
+}
+
+.heder-box {
+  width: 100%;
+  height: 16.1rem;
+  margin-top: 1.3rem;
+  padding-right: 1rem;
+  display: flex;
+  color: #fff;
+  justify-content: space-between;
+  position: relative;
+}
+
+
+.heder-box ul {
+  width: 43rem;
+  height: 100%;
+  padding: 1.0rem 2rem 0 3rem;
+}
+
+.heder-box h1 {
+  position: relative;
+  width: 38rem;
+  font-size: 1.7rem;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+.heder-box li {
+  width: 33%;
+  float: left;
+  font-size: 1.6rem;
+  height: 2.2rem;
+  padding-left: 0.5rem;
+  margin-bottom: 1.6rem;
+}
+
+.heder-box li:nth-child(2) {
+  padding-right: 2.5rem;
+}
+
+.heder-box li:nth-child(3) {
+  padding-left: 0.4rem;
+}
+
+.heder-box li:nth-child(4) {
+  padding-right: 0.6rem;
+}
+
+.heder-box li span {
+  font-size: 1.8rem;
+  float: right;
+  text-align: center;
+}
+
+.heder-box li i {
+  color: #f8cc74;
+  font-weight: bolder;
+  font-style: normal;
+}
+
+.heder-box h3 {
+  margin-top: 2.8rem;
+  color: #39BCFD;
+  text-align: center;
+}
+
+.heder-box p {
+  text-align: center;
+  padding-right: 0.5rem;
+  margin-top: 4rem;
+}
+
+.header-main {
+  height: 64rem;
+  width: 120rem;
+  background: url(../imgs/z.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.ditu-njs {
+  margin: auto;
+  width: 92rem;
+  height: 61.5rem;
+}
+
+.header-right {
+  height: 64rem;
+  width: 44rem;
+  background-size: 100%;
+}
+
+.middle-top {
+  height: 29rem;
+  width: 44rem;
+  background: url(../imgs/2.png) no-repeat;
+  background-size: 100%;
+}
+
+.middle-bottom {
+  height: 29rem;
+  width: 44rem;
+  background: url(../imgs/2.png) no-repeat;
+  background-size: 100%;
+  margin-top: 5.5rem;
+}
+
+/* 主体盒子布局 */
+
+.main-one footer {
+  width: 100%;
+  margin-top: 2.5rem;
+  padding: 0 2.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 农民合作社  */
+.footer-nmhzs {
+  float: right;
+  width: 75.35% !important;
+
+}
+
+
+.footer-left,
+.footer-right {
+  height: 30rem;
+  width: 44rem;
+  background: url(../imgs/2.png) no-repeat;
+  background-size: 100%;
+}
+
+.footer-main {
+  height: 30rem;
+  width: 120rem;
+  background: url(../imgs/3.png) no-repeat;
+  background-size: 100% 96%;
+  background-position-y: 0rem;
+}
+
+/* 农民合作社 */
+.header-left-hzstitleul {
+  width: 100%;
+  height: 7.5rem;
+  margin-top: 0.5rem;
+  padding-right: 1rem;
+  display: flex;
+  color: #fff;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header-left-hzstitleul ul {
+  width: 43rem;
+  height: 100%;
+  padding: 1.0rem 0rem 0 0.5rem;
+}
+
+.header-left-hzstitleul ul li {
+  width: 25%;
+  float: left;
+  font-size: 1.6rem;
+  height: 2.2rem;
+  padding-left: 0.5rem;
+}
+
+.header-left-hzstitleul ul li h3 {
+  color: #39BCFD;
+  text-align: center;
+}
+
+.header-left-hzstitleul ul li:nth-child(1) h3 {
+  padding-left: 1rem;
+}
+
+.header-left-hzstitleul ul li:nth-child(2) h3 {
+  padding-left: 0.3em;
+}
+
+.header-left-hzstitleul ul li:nth-child(4) h3 {
+  padding-right: 1rem;
+}
+
+.header-left-hzstitleul ul li p {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.header-left-hzstitleultwo ul {
+  padding: 2.2rem 2rem 0 3rem;
+}
+
+.header-left-hzstitleulthree ul {
+  padding: 0rem 2rem 0 3rem;
+}
+
+/* 农业龙头企业 */
+.header-left-nyltqytitleol {
+  margin-top: 3rem;
+}
+
+.header-left-nyltqytitle ol li {
+  margin-top: 2.3rem;
+}
+
+/* 区级弹窗 */
+.card_mb {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.area-viewbox {
+  /* display: none; */
+  background: url(../imgs/card_bg1.png) no-repeat;
+  background-size: 100% 100%;
+  width: 165rem;
+  height: 103rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  padding: 0 2rem;
+  box-shadow: 0rem 0rem 3rem #0d4e96;
+}
+
+.areaviewbox-header {
+  height: 7rem;
+  padding-top: 1rem;
+  background: url(../imgs/card_bt1.png) no-repeat center 25%;
+
+  position: relative;
+}
+
+.areaviewboxheader-h1 {
+  width: 100%;
+  text-align: center;
+  color: #51dbff;
+  font-weight: bolder;
+  font-size: 3rem;
+}
+
+.areaviewboxheader-none {
+  width: 2.8rem;
+  height: 2.8rem;
+  /* background: #51dbff; */
+  position: absolute;
+  right: -0.8rem;
+  top: 1rem;
+  cursor: pointer;
+}
+
+.areaviewboxheader-none img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 上 */
+.areaviewbox-top {
+  /* padding: 0 0.7rem; */
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 上左 */
+.areaviewboxtop-left {
+  width: 106rem;
+  background: url(../imgs/card_k2.png) no-repeat;
+  background-size: 100% 100%;
+  margin: 1rem 0 0 0rem;
+}
+
+.areaviewbox-title {
+  font-size: 2rem;
+  color: #51dbff;
+  /* font-weight: bolder; */
+  height: 4rem;
+  line-height: 4rem;
+  margin-top: -1.8rem;
+  text-indent: 0.9rem;
+  letter-spacing: 0.2rem;
+}
+
+.areaviewbox-title span {
+  font-size: 1.6rem;
+}
+
+.areaviewboxtopleft-upper,
+.areaviewboxtopleft-sfqy {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+}
+
+.areaviewboxtopleft-upper {
+  margin-top: 2.5rem;
+}
+
+.areaviewboxtopleft-upper div {
+  width: 32.6rem;
+  height: 9rem;
+  background: #043973;
+}
+
+.areaviewboxtopleft-upper div>p {
+  text-align: center;
+  color: #51dbff;
+  font-size: 2.8rem;
+  font-weight: bolder;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.areaviewboxtopleft-upper div span {
+  display: block;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #D7DCE3;
+}
+
+.areaviewboxtopleft-sfqy {}
+
+.areaviewboxtopleft-sfqy>div {
+  width: 50rem;
+  height: 16rem;
+  padding: 0 1.8rem;
+  background: #043973;
+  margin-bottom: 1rem;
+}
+
+.areaviewboxtopleft-h1 {
+  height: 5.5rem;
+  border-bottom: 0.1rem dashed #0b658e;
+}
+
+.areaviewboxtopleft-h1 h1 {
+  color: #D7DCE3;
+  font-weight: inherit;
+  line-height: 5.5rem;
+}
+
+.areaviewboxtopleft-h1 h1 i {
+  font-style: normal;
+  color: #2bccff;
+
+}
+
+.areaviewboxtopleft-h1 h1 .bigcu {
+  font-weight: bolder;
+}
+
+.areaviewboxtopleft-h1 h1 span {
+  float: right;
+}
+
+.areaviewboxtopleft-shuju {
+  display: flex;
+  justify-content: center;
+}
+
+.areaviewboxtopleft-shuju div {
+  margin: 0 2.5rem;
+  width: 8rem;
+  background: url(../imgs/card_zt.png) no-repeat center center/100%;
+  background-position: 0rem 3rem;
+
+}
+
+.areaviewboxtopleft-shuju div h1 {
+  text-align: center;
+  font-weight: bolder;
+  color: #2bccff;
+  margin: 1rem 0 4rem 0;
+}
+
+.areaviewboxtopleft-shuju div span {
+  display: block;
+  font-size: 1.4rem;
+  color: #D7DCE3;
+  text-align: center;
+}
+
+/* 上右 */
+.areaviewboxtop-right {
+  width: 53rem;
+  background: url(../imgs/card_k3.png) no-repeat;
+  background-size: 100% 97.5%;
+  padding-top: 1rem;
+  background-position: 0 0.8rem;
+}
+
+.areaviewbox-rightul {
+  width: 100%;
+  margin-top: 1.4rem;
+  padding: 0 1rem;
+  height: 28rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+}
+
+.areaviewbox-rightul li {
+  width: 25rem;
+  height: 8rem;
+  margin-top: 1rem;
+  background: #043973;
+}
+
+.areaviewbox-rightul li div {
+  text-align: center;
+  color: #51dbff;
+  font-size: 2.8rem;
+  font-weight: bolder;
+  margin: 0.5rem 0;
+}
+
+.areaviewbox-rightul li p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #D7DCE3;
+}
+
+/* 弹窗中 */
+.areaviewbox-in {
+  /* padding: 0 1.8rem; */
+  margin-top: 3rem;
+}
+
+.areaviewbox-in ul {
+  display: flex;
+  /* margin-top: 2rem; */
+}
+
+.areaviewbox-in ul li {
+  background: url(../imgs/card_k4.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.areaviewbox-in ul li:nth-child(1) {
+  width: 52.1rem;
+  margin-right: 2rem;
+}
+
+.areaviewbox-in ul li:nth-child(2) {
+  width: 52.1rem;
+  margin-right: 2rem;
+}
+
+.areaviewbox-in ul li:nth-child(3) {
+  width: 53rem;
+}
+
+/* 弹窗下 */
+.areaviewbox-down {
+  height: 30rem;
+  margin-top: 2.5rem;
+  background: url(../imgs/card_k5.png) no-repeat;
+  background-size: 100% 95%;
+  background-position: 0rem 1.3rem;
+}
+
+/* 家庭农场样式弹窗调整 */
+.areaviewboxtopleftupper_jtnc div {
+  width: 24rem;
+}
+
+.areaviewboxtopleft-upper div p i {
+  font-style: normal;
+  font-size: 1.2rem;
+  font-weight: initial;
+}
+
+.areaviewboxtopleft-upper div p i i {
+  color: #D7DCE3;
+}
+
+/* 农民合作社样式弹窗调整 */
+.areaviewboxtopleftupper_hzs {
+  justify-content: flex-start;
+}
+
+.areaviewboxtopleftupper_hzs div {
+  width: 22rem;
+  margin-right: 2rem;
+}
+
+.areaviewboxtopleftupper_hzs .div_hzsys {
+  width: 30rem;
+  margin-right: 0rem;
+  padding: 0 1.4rem;
+}
+
+.areaviewboxtopleftupper_hzs .div_hzsys .div_hzsys_top {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #D7DCE3;
+  margin: 0;
+  margin-top: 0.5rem;
+  font-weight: initial;
+}
+
+.div_hzsys ul {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.div_hzsys ul li {
+  width: 4.8rem;
+  background: url(../imgs/card_zt.png) no-repeat center center/100%;
+  background-position: 0rem 1.8rem;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #D7DCE3;
+}
+
+.div_hzsys ul li p {
+  color: #51dbff;
+  font-weight: bolder;
+  font-size: 1.4rem;
+  margin: 0.5rem 0 1.4rem 0;
+}
+
+.div_hzsys ul li i {
+  font-style: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#box-title {
+  display: block;
+}
+
+/* 结束 */
+@media all and (orientation:portrait) {
+
+  nav,
+  .header-left,
+  .header-main,
+  .header-right,
+  .footer-left,
+  .footer-right {
+    width: 100%;
+  }
+}

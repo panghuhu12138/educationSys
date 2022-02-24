@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+*, *:before, *:after{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+body, h1, h2, h3, h4, h5, h6 hr, p, blockquote, dl, dt, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, img{
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+    border: none;
+}
+img{
+    vertical-align: top;
+}
+em{
+    font-style: normal;
+}
+ul, ol {
+    list-style: none;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a, ins{
+    text-decoration: none;
+}
+*:focus{
+    outline: none;
+}
+a{
+    color: #333;
+}
+.left{
+    float: left;
+
+}
+.right{
+    float: right;
+}
+/* 清除浮动带来的效果 */
+.clearfix:after{
+    display: block;
+    content: "";
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix{
+    zoom: 1;
+}
+.hide{
+    display: none;
+}
+.block{
+    display: block;
+}
+.box-1200{
+    width: 1200px;
+    margin: 0 auto;
+
+}

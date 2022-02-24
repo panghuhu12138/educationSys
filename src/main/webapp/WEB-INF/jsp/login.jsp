@@ -118,7 +118,7 @@
         <span class="mdi mdi-lock" aria-hidden="true"></span>
         <input type="password" class="form-control" id="password" style="width: 340px" placeholder="密码长度为8-15且包含字母、数字、特殊字符">
       </div>
-      <div id="captchaDiv" class="form-group has-feedback row" style="display: none">
+      <div id="captchaDiv" class="form-group has-feedback row">
         <div class="col-6" style="padding-right: 0">
           <span class="mdi mdi-check-all form-control-feedback" aria-hidden="true"></span>
           <input type="text" id="code" name="captcha" class="form-control" onkeyup="checkCaptcha()" placeholder="验证码">
@@ -195,7 +195,8 @@
             code: $("#code").val()
           },
           success: function (resp) {
-            if (resp.code === 0) {
+            console.log(resp);
+            if (resp.reCorde === 0) {
               $("#checkImg").attr('src',"<%=request.getContextPath()%>/images/icon_true.png");
               $("#isTrue").val(1);
             } else {
@@ -240,13 +241,12 @@
           code : code
         },
         success: function (resp) {
-          if (resp.code === 0) {
-            window.location.href = "<%=request.getContextPath()%>/main/mainPage.do";
+          if (resp.reCorde === 0) {
+            window.location.href = "<%=request.getContextPath()%>/login/toMainPage.do";
           } else {
             $("#isTrue").val(0);
             alert(resp.msg);
             clear();
-            $("#captchaDiv").show();
             $("#captcha").click();
           }
         }

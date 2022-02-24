@@ -1,5 +1,8 @@
 package Controllers;
 
+import Entity.User;
+import Service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,13 +10,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import utils.ApiResult;
 import utils.ImgCheckCode;
 import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
+
+    @Autowired
+    private IUserService userService;
 
     ImgCheckCode imgCheckCode=new ImgCheckCode();
 
@@ -24,6 +28,12 @@ public class LoginController {
     public String login(HttpServletRequest request, ModelMap modelMap) {
         modelMap.addAttribute("account", request.getParameter("account"));
         return "login";
+    }
+
+    /*跳转到登录页面*/
+    @RequestMapping("/toMainPage")
+    public String toMainPage() {
+        return "main";
     }
 
     /*刷新验证码*/
@@ -50,9 +60,17 @@ public class LoginController {
     @ResponseBody
     public ApiResult logIn(HttpServletRequest request) {
         try {
+            User user = new User();
             String account = request.getParameter("account");
             String password = request.getParameter("password");
-            return ApiResult.success();
+            user.setUsername(account);
+            user.setPassword(password);
+            user = userService.find(user);
+            if (user != null) {
+                return ApiResult.success();
+            } else {
+                return ApiResult.failed("账号或密码错误！");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return ApiResult.failed("系统异常！请联系管理员！");

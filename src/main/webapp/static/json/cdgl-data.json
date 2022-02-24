@@ -1,0 +1,98 @@
+{
+  "total": 13,
+  "data": [{
+    "id": 1,
+    "name": "惠民资金",
+    "sort": 1,
+    "path": "/main/dafaultHmzj1",
+    "xnumber": "32exfdr3214",
+    "child":"资产管理",
+    "tag": "菜单",
+    "status": "primary",
+    "children": [{
+      "id": 11,
+      "name": "专项资金管理",
+      "sort": 1,
+      "path": "",
+      "xnumber": "32exfdr3214",
+      "child":"资产管理",
+      "tag": "功能",
+      "status": "primary",
+      "children": [{
+        "id": 111,
+        "name": "专项资金录入",
+        "sort": 1,
+        "path": "/main/dafaultHmzj2",
+        "xnumber": "32exfdr3214",
+        "child":"资产管理",
+        "tag": "功能"
+      }, {
+        "id": 112,
+        "name": "专项资金审核",
+        "sort": 2,
+        "path": "/main/dafaultHmzj3",
+        "xnumber": "32exfdr3214",
+        "child":"资产管理",
+        "tag": "功能"
+      }, {
+        "id": 113,
+        "name": "专项资金管理",
+        "sort": 3,
+        "path": "/main/dafaultHmzj4",
+        "xnumber": "32exfdr3214",
+        "child":"资产管理",
+        "tag": "功能"
+      }, {
+        "id": 114,
+        "name": "预算调整查询",
+        "sort": 4,
+        "path": "/main/dafaultHmzj5",
+        "xnumber": "32exfdr3214",
+        "child":"资产管理",
+        "tag": "功能"
+      }]
+    }, {
+      "id": 12,
+      "name": "专项资金分配",
+      "sort": 2,
+      "path": "",
+      "xnumber": "32exfdr3214",
+      "child":"资产管理",
+      "tag": "功能",
+      "status": "primary",
+      "children": [{
+        "id": 121,
+        "name": "专项资金确认",
+        "sort": 1,
+        "path": "/main/dafaultHmzj6",
+        "xnumber": "32exfdr3214",
+        "child":"资产管理",
+        "tag": "功能"
+      }, {
+        "id": 122,
+        "name": "资金投向管理",
+        "sort": 2,
+        "path": "/main/dafaultHmzj7",
+        "xnumber": "32exfdr3214",
+        "child":"资产管理",
+        "tag": "功能"
+      }, {
+        "id": 123,
+        "name": "执行部门设置",
+        "sort": 3,
+        "path": "/main/dafaultHmzj8",
+        "xnumber": "32exfdr3214",
+        "child":"资产管理",
+        "tag": "功能"
+      }, {
+        "id": 124,
+        "name": "专项资金分配",
+        "sort": 4,
+        "path": "/main/dafaultHmzj9",
+        "xnumber": "32exfdr3214",
+        "child":"资产管理",
+        "tag": "功能"
+      }]
+    }]
+  }]
+}
