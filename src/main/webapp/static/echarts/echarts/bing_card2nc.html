@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <!--echarts基础js!-->
+    <script type="text/javascript" src="../js/echarts.js"></script>
+    <script type="text/javascript">
+        // $(window).resize(function () {
+        //     //图表容器宽高赋值
+        //     $("#tb").css("width", $(window).width());
+        //     $("#tb").css("height", $(window).height());
+        // });
+        // $(window).ready(function () {
+        //     $("#tb").css("width", $(window).width());
+        //     $("#tb").css("height", $(window).height());
+        // });
+    </script>
+</head>
+
+<body style="margin:0;padding:0">
+    <div id="tb"></div>
+    <script>
+        //echarts本身有个小问题，其图表容器必须 px 定义宽度高度，不可用百分比，用百分比就不能加载图表，也不能通过取值赋值的形式给图表容器赋值宽度高度
+        //这个方法在echart示例初始化前后做到了可取值来给图表容器赋值
+
+        var bt = document.getElementById('tb');
+        //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+        var resizebt = function () {
+            bt.style.width = window.innerWidth + 'px';
+            bt.style.height = window.innerHeight + 'px';
+        };
+        //设置容器高宽
+        resizebt();
+        // 基于准备好的dom，初始化echarts实例
+        var btchart = echarts.init(bt, 'halloween');
+        var colors = ['#3EA1FF', '#3FCBCC', '#50CA73', '#fad443', '#C76EFF', '#FFA64F', '#F2637D']; //饼状图颜色
+        btchart.setOption({
+            color: colors,
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b} : {c} %',
+            },
+            // legend: {  //可点击 列表
+            //     show:true,
+            //     width:'10', //宽度
+            //     icon: 'circle',  //图标
+            //     left: '61%', //位置
+            //     top: 'center',
+            //     align: 'left',
+            //     textStyle: {
+            //         color: "#fff",
+
+            //     },
+            //     itemGap: 13 //间隔
+            // },
+            legend: [{
+                icon: 'circle', //图标
+                x: '44%',
+                y: 'center',
+                width: '10', //宽度
+                data: ['种植业', '畜牧业', '渔业', '林业'],
+                textStyle: {
+                    color: '#fff',
+                    fontSize: '10',
+                },
+                itemHeight: 10,
+                itemWidth: 10,
+            }, {
+                icon: 'circle', //图标
+                x: '70%',
+                y: '23.2%',
+                width: '10', //宽度
+                data: ['种养结合', '农旅结合', '其它'],
+                textStyle: {
+                    color: '#fff',
+                    fontSize: '10',
+                },
+                itemGap: 13, //间隔
+                itemHeight: 10, //尺寸
+                itemWidth: 10,
+            }],
+            series: [{
+                name: '经营规模',
+                type: 'pie',
+                radius: ['40%', '75%'], //尺寸大小
+                center: ["20%", "53%"], //图的位置
+                avoidLabelOverlap: false,
+                itemStyle: {
+                    borderRadius: 0,
+                    borderColor: '#041b46',
+                    borderWidth: 0
+                },
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: false, //内圈字体
+                        fontSize: '40',
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: [{
+                        value: 20,
+                        name: '种植业',
+                    },
+                    {
+                        value: 20,
+                        name: '畜牧业'
+                    },
+                    {
+                        value: 60,
+                        name: '渔业'
+                    },
+                    {
+                        value: 60,
+                        name: '林业'
+                    },
+                    {
+                        value: 60,
+                        name: '种养结合'
+                    },
+                    {
+                        value: 60,
+                        name: '农旅结合'
+                    },
+                    {
+                        value: 60,
+                        name: '其它'
+                    },
+                ]
+            }]
+        })
+        //用于使chart自适应高度和宽度
+        window.onresize = function () {
+            //重置容器高宽
+            resizebt();
+            btchart.resize();
+        };
+    </script>
+</body>
+
+</html>

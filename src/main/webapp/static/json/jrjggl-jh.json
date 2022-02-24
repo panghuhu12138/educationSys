@@ -1,0 +1,36 @@
+{
+    "total": 4,
+    "data": [{
+      "name": "中天置业顾问有限公司",
+      "shtyxydm": "xxxxxxxxxxxxxx",
+      "type": "金融惠农贷",
+      "lxr": "姚健",
+      "tel": "18234561877",
+      "status": "停用",
+      "style": "info"
+    }, {
+      "name": "紫金农商银行",
+      "shtyxydm": "xxxxxxxxxxxxxx",
+      "type": "金陵惠农小额贷",
+      "lxr": "肖庆宁",
+      "tel": "13934561111",
+      "status": "正常",
+      "style": "success"
+    }, {
+      "name": "建设银行",
+      "shtyxydm": "xxxxxxxxxxxxxx",
+      "type": "惠农快贷",
+      "lxr": "邵则芳",
+      "tel": "13734564572",
+      "status": "正常",
+      "style": "success"
+    }, {
+      "name": "江苏银行-广州路支行",
+      "shtyxydm": "xxxxxxxxxxxxxx",
+      "type": "惠农快贷",
+      "lxr": "周友新",
+      "tel": "13734562137",
+      "status": "正常",
+      "style": "success"
+    }]
+  }

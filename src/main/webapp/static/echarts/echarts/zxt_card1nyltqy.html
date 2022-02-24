@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <!--echarts基础js!-->
+    <script type="text/javascript" src="../js/echarts.js"></script>
+    <script type="text/javascript">
+        // $(window).resize(function () {
+        //     //图表容器宽高赋值
+        //     $("#tb").css("width", $(window).width());
+        //     $("#tb").css("height", $(window).height());
+        // });
+        // $(window).ready(function () {
+        //     $("#tb").css("width", $(window).width());
+        //     $("#tb").css("height", $(window).height());
+        // });
+    </script>
+</head>
+
+<body style="margin:0;padding:0">
+    <div id="tb"></div>
+    <script>
+        //echarts本身有个小问题，其图表容器必须 px 定义宽度高度，不可用百分比，用百分比就不能加载图表，也不能通过取值赋值的形式给图表容器赋值宽度高度
+        //这个方法在echart示例初始化前后做到了可取值来给图表容器赋值
+
+        var bt = document.getElementById('tb');
+        //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+        var resizebt = function () {
+            bt.style.width = window.innerWidth + 'px';
+            bt.style.height = window.innerHeight + 'px';
+        };
+        //设置容器高宽
+        resizebt();
+        // 基于准备好的dom，初始化echarts实例
+        var btchart = echarts.init(bt, 'halloween');
+
+        btchart.setOption({
+            title: [{
+                    text: '万元',
+                    x: '5%',
+                    y: '8%',
+                    textAlign: 'center',
+                    textStyle: {
+                        fontSize: '14',
+                        fontWeight: '100',
+                        color: '#fff',
+                        textAlign: 'center',
+                    },
+                },],
+            tooltip: { //hover框
+                show: false,
+                trigger: "axis", //axis , item
+                backgroundColor: "RGBA(0, 49, 85, 1)",
+                borderColor: "rgba(0, 151, 251, 1)",
+                borderWidth: 1,
+                borderRadius: 0,
+                textStyle: {
+                    color: "#BCE9FC",
+                    fontSize: 16,
+                    align: "left"
+                }
+            },
+            legend: { // 头部标题
+                top: '10%',
+                right:'5%',
+                textStyle: {
+                    fontSize: 10, //字体大小
+                    color: '#ffffff' //字体颜色
+                },
+                icon: 'roundRect', //头部形状
+                data: ['农产品生产型', '加工流通型', '农产品市场带动型', '农业科技推广型','饲料生产型','农业投入品生产型','农业新业态型'],
+                itemHeight: 10, //尺寸
+                itemWidth: 10,
+            },
+
+            color: ["#0080ff", "#4cd5ce"],
+            grid: {
+                left: "4%",
+                right: "5%",
+                bottom: "17%",
+                containLabel: true,
+                top: "25%"
+            },
+            xAxis: {
+                type: "category",
+                boundaryGap: false, //坐标轴两边留白
+                data: ['2015', '2016', '2017', '2018', '2019', '2020', '2021'],
+                axisLabel: {
+                    //坐标轴刻度标签的相关设置。
+                    interval: 0, //设置为 1，表示『隔一个标签显示一个标签』
+                    //	margin:15,
+                    textStyle: {
+                        color: "#fff",
+                        fontStyle: "normal",
+                        fontSize: 10
+                    }
+                },
+                axisTick: {
+                    //坐标轴刻度相关设置。
+                    show: false
+                },
+                axisLine: {
+                    //坐标轴轴线相关设置
+                    lineStyle: {
+                        color: '#005eb1', //底部坐标横线
+                    }
+                },
+                // splitLine: {
+                //     //坐标轴在 grid 区域中的分隔线。
+                //     show: true,
+                //     lineStyle: {
+                //         color:'#2e5bc2'
+                //     }
+                // }
+            },
+            yAxis: [{
+                type: "value",
+                splitNumber: 5,
+                axisLabel: {
+                    textStyle: {
+                        color: "#fff", //轴线字色
+                        fontStyle: "normal",
+                        fontSize: 10
+                    }
+                },
+                axisLine: {
+                    show: false,
+                    //     lineStyle: {
+                    //         // color: '#fff', //侧边坐标横线
+                    // },
+                },
+                axisTick: {
+                    show: false
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#2e5bc2", // 背景网格横线
+                        width: 1,
+                    }
+                },
+
+            }],
+            series: [{
+                    name: '农产品生产型',
+                    type: "line",
+                    itemStyle: {
+                        normal: {
+                            color: "#3ea1ff", //点色
+                            lineStyle: {
+                                color: "#3ea1ff", //折线色
+                                width: 2
+                            },
+                            // areaStyle: {  //折线背景下拉
+                            //   color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
+                            //     {
+                            //       offset: 0,
+                            //       color: "rgba(48, 236, 166, 0.1)"
+                            //     },
+                            //     {
+                            //       offset: 1,
+                            //       color: "rgba(48, 236, 166, 0.4)"
+                            //     }
+                            //   ])
+                            // }
+                        }
+                    },
+                    // areaStyle: { normal: {} },
+                    symbolSize: 4, //折线点的大小
+                    data: [14, 26, 23, 35, 31, 30, 35]
+                },
+                {
+                    name: '加工流通型',
+                    type: "line",
+                    itemStyle: {
+                        normal: {
+                            color: "#3fcbcc",
+                            lineStyle: {
+                                color: "#3fcbcc",
+                                width: 2
+                            },
+                        },
+                    },
+                    symbolSize: 4, //折线点的大小
+                    data: [48, 40, 42, 38, 47, 47, 31]
+                },
+                {
+                    name: '农产品市场带动型',
+                    type: "line",
+                    itemStyle: {
+                        normal: {
+                            color: "#50ca73",
+                            lineStyle: {
+                                color: "#50ca73",
+                                width: 2
+                            },
+                        },
+                    },
+                    symbolSize: 4, //折线点的大小
+                    data: [28, 11, 18, 30, 24, 27, 21]
+                },
+                {
+                    name: '农业科技推广型',
+                    type: "line",
+                    itemStyle: {
+                        normal: {
+                            color: "#fad443",
+                            lineStyle: {
+                                color: "#fad443",
+                                width: 2
+                            },
+                        },
+                    },
+                    symbolSize: 4, //折线点的大小
+                    data: [4, 6, 9, 7, 18, 9, 1]
+                },
+                {
+                    name: '饲料生产型',
+                    type: "line",
+                    itemStyle: {
+                        normal: {
+                            color: "#C76EFF",
+                            lineStyle: {
+                                color: "#C76EFF",
+                                width: 2
+                            },
+                        },
+                    },
+                    symbolSize: 4, //折线点的大小
+                    data: [4, 6, 9, 7, 18, 9, 1]
+                },
+                {
+                    name: '农业投入品生产型',
+                    type: "line",
+                    itemStyle: {
+                        normal: {
+                            color: "#FFA64F",
+                            lineStyle: {
+                                color: "#FFA64F",
+                                width: 2
+                            },
+                        },
+                    },
+                    symbolSize: 4, //折线点的大小
+                    data: [19, 28, 33, 23, 21, 23, 11]
+                },
+                {
+                    name: '农业新业态型',
+                    type: "line",
+                    itemStyle: {
+                        normal: {
+                            color: "#F2637D",
+                            lineStyle: {
+                                color: "#F2637D",
+                                width: 2
+                            },
+                        },
+                    },
+                    symbolSize: 4, //折线点的大小
+                    data: [33, 32, 48, 49, 36, 38, 25]
+                }
+            ],
+        })
+        //用于使chart自适应高度和宽度
+        window.onresize = function () {
+            //重置容器高宽
+            resizebt();
+            btchart.resize();
+        };
+    </script>
+</body>
+
+</html>

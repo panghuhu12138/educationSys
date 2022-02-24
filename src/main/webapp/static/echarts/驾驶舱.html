@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/commom.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="./js/echarts.js"></script>
+  <script src="./js/jquery-3.2.1.min.js"></script>
+  <!-- <script src="./js/index.js"></script> -->
+  <title>驾驶舱</title>
+</head>
+
+<body>
+  <!-- 开始 -->
+  <section class="section">
+    <!-- 头 -->
+    <nav>
+      <div class="nav-left">
+        <div class="nav-gtnc" id="ood">家庭农场</div>
+        <div id="oodtwo">农民合作社</div>
+        <div id="oodthree">农业龙头企业</div>
+      </div>
+      <div class="nav-main">南京市新型经营主体信息(信用)管理系统</div>
+      <div class="nav-right">
+        <div>
+          <select>
+            <option value="江宁区">江宁区</option>
+            <option value="浦口区">浦口区</option>
+            <option value="建业区">建业区</option>
+          </select>
+        </div>
+        <div>
+          <select>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+          </select>
+        </div>
+      </div>
+    </nav>
+    <div class="tab-mainadd" style="width: 100%;">
+      <!-- 主体内容1 家庭农场 -->
+      <div class="main-one">
+        <main>
+          <!-- 上左-->
+          <div class="header-left">
+            <div class="wotitle">家庭农场情况</div>
+            <ol>
+              <li> 家庭农场数
+                <span><i>1300</i> 家</span>
+              </li>
+              <li>本年度新增
+                <span><i>100</i> 家</span>
+              </li>
+              <li>纳入惠农贷
+                <span><i>80</i> 家</span>
+              </li>
+              <li>市场监管部门登记
+                <span><i>30</i> 家, 占比<i> 20%</i></span>
+              </li>
+            </ol>
+            <div class="heder-box">
+              <ul>
+                <h1>示范农场 <span><i>50</i> 家, 占比<i> 20%</i></span></h1>
+                <li>
+                  <h3>10</h3>
+                  <p>省级示范</p>
+                </li>
+                <li>
+                  <h3>30</h3>
+                  <p>市级示范</p>
+                </li>
+                <li>
+                  <h3>10</h3>
+                  <p>区级示范</p>
+                </li>
+              </ul>
+            </div>
+            <div class="heder-box">
+              <ul>
+                <h1>二品一标 <span><i>40</i> 家, 占比<i> 15%</i></span></h1>
+                <li>
+                  <h3>10</h3>
+                  <p>绿色</p>
+                </li>
+                <li>
+                  <h3>15</h3>
+                  <p>有机</p>
+                </li>
+                <li>
+                  <h3>15</h3>
+                  <p>地理标志</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 上中 -->
+          <div class="header-main">
+            <div class="ditu-njs">
+              <iframe src="echarts/njs_1.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </div>
+          </div>
+          <!-- 上右 -->
+          <div class="header-right">
+            <!-- 上右上 -->
+            <div class="middle-top">
+              <div class="wotitle">辖区农场数—TOP6</div>
+              <p>
+                <iframe src="echarts/zzt_1.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+              </p>
+            </div>
+            <!-- 上中右 -->
+            <div class="middle-bottom">
+              <div class="wotitle">经营类型占比</div>
+              <p>
+                <iframe src="echarts/bing_4.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+              </p>
+            </div>
+          </div>
+        </main>
+        <footer>
+          <!-- 下左 -->
+          <div class="footer-left">
+            <div class="wotitle">总收入、净利润分布情况</div>
+            <p>
+              <iframe src="echarts/bing_3.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </p>
+          </div>
+          <!-- 下中 -->
+          <div class="footer-main">
+            <div class="wotitle wotitletwo">经营产值走势</div>
+            <p>
+              <iframe src="echarts/zxt_1.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </p>
+          </div>
+          <!-- 下右 -->
+          <div class="footer-right">
+            <div class="wotitle">经营规模分类统计</div>
+            <p>
+              <iframe src="echarts/bing_5.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </p>
+          </div>
+        </footer>
+      </div>
+      <!-- 主体内容2 农民合作社-->
+      <div class="main-one" style="display: none;">
+        <main>
+          <!-- 上左-->
+          <div class="header-left header-left-hzstitle">
+            <div class="wotitle">农民合作社情况</div>
+            <ol>
+              <li> 农民合作社数
+                <span><i>1300</i> 家</span>
+              </li>
+              <li>本年度新增
+                <span><i>100</i> 家</span>
+              </li>
+              <li>纳入金陵惠农贷扶持名录
+                <span><i>80</i> 家</span>
+              </li>
+              <li>示范合作社
+                <span><i>50</i> 家, 占比<i> 20%</i></span>
+              </li>
+            </ol>
+            <div class="header-left-hzstitleul">
+              <ul>
+                <li>
+                  <h3>10</h3>
+                  <p>省级示范</p>
+                </li>
+                <li>
+                  <h3>30</h3>
+                  <p>市级示范</p>
+                </li>
+                <li>
+                  <h3>30</h3>
+                  <p>区级示范</p>
+                </li>
+                <li>
+                  <h3>10</h3>
+                  <p>部级示范</p>
+                </li>
+              </ul>
+            </div>
+            <div class="heder-box header-left-hzstitleultwo">
+
+              <ul>
+                <h1>合作社领办主体 </h1>
+                <li>
+                  <h3>10</h3>
+                  <p>村集体</p>
+                </li>
+                <li>
+                  <h3>30</h3>
+                  <p>个人</p>
+                </li>
+                <li>
+                  <h3>10</h3>
+                  <p>企业</p>
+                </li>
+              </ul>
+
+            </div>
+            <div class="heder-box header-left-hzstitleulthree">
+              <ul>
+                <h1>二品一标 <span><i>40</i> 家, 占比<i> 15%</i></span></h1>
+                <li>
+                  <h3>10</h3>
+                  <p>绿色</p>
+                </li>
+                <li>
+                  <h3>15</h3>
+                  <p>有机</p>
+                </li>
+                <li>
+                  <h3>15</h3>
+                  <p>地理标志</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 上中 -->
+          <div class="header-main">
+            <div class="ditu-njs">
+              <iframe src="echarts/njs_1hzs.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </div>
+          </div>
+          <!-- 上右 -->
+          <div class="header-right">
+            <!-- 上右上 -->
+            <div class="middle-top">
+              <div class="wotitle">辖区合作社数─TOP6</div>
+              <p>
+                <iframe src="echarts/zzt_1hzs.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+              </p>
+            </div>
+            <!-- 上中右 -->
+            <div class="middle-bottom">
+              <div class="wotitle">经营类型占比</div>
+              <p>
+                <iframe src="echarts/bing_4hzs.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+              </p>
+            </div>
+          </div>
+        </main>
+        <footer>
+          <!-- 下左 -->
+          <div class="footer-left">
+            <div class="wotitle">总收入、净利润分布情况</div>
+            <p>
+              <iframe src="echarts/bing_3hzs.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </p>
+          </div>
+          <!-- 下中 -->
+          <div class="footer-main">
+            <div class="wotitle wotitletwo">经营产值走势</div>
+            <p>
+              <iframe src="echarts/zxt_1hzs.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </p>
+          </div>
+          <!-- 下右 -->
+          <div class="footer-right">
+            <div class="wotitle">经营规模分类统计</div>
+            <p>
+              <iframe src="echarts/bing_5hzs.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </p>
+          </div>
+        </footer>
+      </div>
+      <!-- 主体内容3 农业龙头企业-->
+      <div class="main-one" style="display: none;">
+        <main>
+          <!-- 上左-->
+          <div class="header-left header-left-nyltqytitle">
+            <div class="wotitle">农业龙头企业情况</div>
+            <ol>
+              <li> 农业龙头企业数
+                <span><i>1300</i> 家</span>
+              </li>
+              <li>本年度新增
+                <span><i>100</i> 家</span>
+              </li>
+              <li>纳入金陵惠农贷扶持名录
+                <span><i>80</i> 家</span>
+              </li>
+            </ol>
+            <div class="heder-box">
+              <ul>
+                <h1>示范企业 <span><i>50</i> 家, 占比<i> 20%</i></span></h1>
+                <li>
+                  <h3>10</h3>
+                  <p>省级示范</p>
+                </li>
+                <li>
+                  <h3>30</h3>
+                  <p>市级示范</p>
+                </li>
+                <li>
+                  <h3>10</h3>
+                  <p>区级示范</p>
+                </li>
+              </ul>
+
+            </div>
+            <div class="heder-box header-left-nyltqytitleol">
+              <ul>
+                <h1>二品一标 <span><i>40</i> 家, 占比<i> 15%</i></span></h1>
+                <li>
+                  <h3>10</h3>
+                  <p>绿色</p>
+                </li>
+                <li>
+                  <h3>15</h3>
+                  <p>有机</p>
+                </li>
+                <li>
+                  <h3>15</h3>
+                  <p>地理标志</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 上中 -->
+          <div class="header-main">
+            <div class="ditu-njs">
+              <iframe src="echarts/njs_1nyltqy.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </div>
+          </div>
+          <!-- 上右 -->
+          <div class="header-right">
+            <!-- 上右上 -->
+            <div class="middle-top">
+              <div class="wotitle">辖区企业数—TOP6</div>
+              <p>
+                <iframe src="echarts/zzt_1nyltqy.html" frameborder="0" scrolling="no" width="100%"
+                  height="100%"></iframe>
+              </p>
+            </div>
+            <!-- 上中右 -->
+            <div class="middle-bottom">
+              <div class="wotitle">企业类型占比</div>
+              <p>
+                <iframe src="echarts/bing_4nyltqy.html" frameborder="0" scrolling="no" width="100%"
+                  height="100%"></iframe>
+              </p>
+            </div>
+          </div>
+        </main>
+        <footer>
+          <!-- 下左 -->
+          <div class="footer-left">
+            <div class="wotitle">总收入、净利润分布情况</div>
+            <p>
+              <iframe src="echarts/bing_3nyltqy.html" frameborder="0" scrolling="no" width="100%"
+                height="100%"></iframe>
+            </p>
+          </div>
+          <!-- 下中 -->
+          <div class="footer-main">
+            <div class="wotitle wotitletwo">经营产值走势</div>
+            <p>
+              <iframe src="echarts/zxt_1nyltqy.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </p>
+          </div>
+          <!-- 下右 -->
+          <div class="footer-right">
+            <div class="wotitle">经营规模分类统计</div>
+            <p>
+              <iframe src="echarts/bing_5nyltqy.html" frameborder="0" scrolling="no" width="100%"
+                height="100%"></iframe>
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+  <!-- 区级详情 -->
+  <!-- 弹窗 家庭农场-->
+  <div id="box" class="card_mb">
+    <div class="area-viewbox">
+      <!-- 头 -->
+      <div class="areaviewbox-header">
+        <div class="areaviewboxheader-h1">江宁街道</div>
+        <div class="areaviewboxheader-none" id="card_img">
+          <img src="./imgs/card_close.png" alt="">
+        </div>
+      </div>
+      <!-- 上 -->
+      <div class="areaviewbox-top">
+        <div class="areaviewboxtop-left">
+          <!-- 通用标题 -->
+          <div class="areaviewbox-title">家庭农场情况</div>
+          <div class="areaviewboxtopleft-upper areaviewboxtopleftupper_jtnc">
+            <div>
+              <p>1,300</p>
+              <span>农业龙头企业数(家)</span>
+            </div>
+            <div>
+              <p>100</p>
+              <span>本年度新增(家)</span>
+            </div>
+            <div>
+              <p>80</p>
+              <span>纳入金陵惠农贷扶持名录(家)</span>
+            </div>
+            <div>
+              <p>1300<i><i>，占比</i>100%</i></p>
+              <span>纳入金陵惠农贷扶持名录(家)</span>
+            </div>
+          </div>
+          <div class="areaviewboxtopleft-sfqy">
+            <div>
+              <div class="areaviewboxtopleft-h1">
+                <h1>示范农场 <span><i class="bigcu">50</i> 家, 占比<i> 20%</i></span></h1>
+              </div>
+              <div class="areaviewboxtopleft-shuju">
+                <div>
+                  <h1>10</h1>
+                  <span>省级示范</span>
+                </div>
+                <div>
+                  <h1>30</h1>
+                  <span>市级示范</span>
+                </div>
+                <div>
+                  <h1>10</h1>
+                  <span>区级示范</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="areaviewboxtopleft-h1">
+                <h1>二品一标 <span><i class="bigcu">40</i> 家, 占比<i> 20%</i></span></h1>
+              </div>
+              <div class="areaviewboxtopleft-shuju">
+                <div>
+                  <h1>10</h1>
+                  <span>绿色</span>
+                </div>
+                <div>
+                  <h1>30</h1>
+                  <span>有机</span>
+                </div>
+                <div>
+                  <h1>10</h1>
+                  <span>地理标志</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 上右 -->
+        <div class="areaviewboxtop-right">
+          <!-- 通用标题 -->
+          <div class="areaviewbox-title">辖区主体产值top6<span>(万元)</span></div>
+          <ul class="areaviewbox-rightul">
+            <li>
+              <div>873</div>
+              <p>开心农场</p>
+            </li>
+            <li>
+              <div>245</div>
+              <p>张景天农场</p>
+            </li>
+            <li>
+              <div>786</div>
+              <p>沅江家庭农场</p>
+            </li>
+            <li>
+              <div>650</div>
+              <p>张景天农场</p>
+            </li>
+            <li>
+              <div>230</div>
+              <p>南京浦口区卞应云家庭农场</p>
+            </li>
+            <li>
+              <div>300</div>
+              <p>南京威远农场</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 中 -->
+      <div class="areaviewbox-in">
+        <ul>
+          <li>
+            <div class="areaviewbox-title">总收入、净利润分布情况</div>
+            <div>
+              <iframe src="echarts/bing_card1nc.html" frameborder="0" scrolling="no" width="100%"
+                height="100%"></iframe>
+            </div>
+          </li>
+          <li>
+            <div class="areaviewbox-title">经营类型占比</div>
+            <div>
+              <iframe src="echarts/bing_card2nc.html" frameborder="0" scrolling="no" width="100%"
+                height="100%"></iframe>
+            </div>
+          </li>
+          <li>
+            <div class="areaviewbox-title">经营规模分类统计</div>
+            <div>
+              <iframe src="echarts/bing_card3nc.html" frameborder="0" scrolling="no" width="100%"
+                height="100%"></iframe>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- 下 -->
+      <div class="areaviewbox-down">
+        <div class="areaviewbox-title down_title">经营产值走势</div>
+        <iframe src="echarts/zxt_card1.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+      </div>
+    </div>
+  </div>
+  <!-- 弹窗 农民合作社 -->
+  <div id="box_hzs" class="card_mb">
+    <div class="area-viewbox">
+      <!-- 头 -->
+      <div class="areaviewbox-header">
+        <div class="areaviewboxheader-h1">江宁街道</div>
+        <!-- 关闭按钮 -->
+        <div class="areaviewboxheader-none" id="card_imghzs">
+          <img src="./imgs/card_close.png" alt="">
+        </div>
+      </div>
+      <!-- 上 -->
+      <div class="areaviewbox-top">
+        <div class="areaviewboxtop-left">
+          <!-- 通用标题 -->
+          <div class="areaviewbox-title">农民合作社情况</div>
+          <div class="areaviewboxtopleft-upper areaviewboxtopleftupper_hzs">
+            <div>
+              <p>1,300</p>
+              <span>农业龙头企业数(家)</span>
+            </div>
+            <div>
+              <p>100</p>
+              <span>本年度新增(家)</span>
+            </div>
+            <div>
+              <p>80</p>
+              <span>纳入金陵惠农贷扶持名录(家)</span>
+            </div>
+            <div class="div_hzsys">
+              <p class="div_hzsys_top">合作社领办主体</p>
+              <ul>
+                <li>
+                  <p>10</p>
+                  <i>村集体</i>
+                </li>
+                <li>
+                  <p>30</p>
+                  <i>个人</i>
+                </li>
+                <li>
+                  <p>10</p>
+                  <i>企业</i>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="areaviewboxtopleft-sfqy">
+            <div>
+              <div class="areaviewboxtopleft-h1">
+                <h1>示范企业 <span><i class="bigcu">50</i> 家, 占比<i> 20%</i></span></h1>
+              </div>
+              <div class="areaviewboxtopleft-shuju">
+                <div>
+                  <h1>10</h1>
+                  <span>省级示范</span>
+                </div>
+                <div>
+                  <h1>30</h1>
+                  <span>市级示范</span>
+                </div>
+                <div>
+                  <h1>10</h1>
+                  <span>区级示范</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="areaviewboxtopleft-h1">
+                <h1>二品一标 <span><i class="bigcu">40</i> 家, 占比<i> 20%</i></span></h1>
+              </div>
+              <div class="areaviewboxtopleft-shuju">
+                <div>
+                  <h1>10</h1>
+                  <span>绿色</span>
+                </div>
+                <div>
+                  <h1>30</h1>
+                  <span>有机</span>
+                </div>
+                <div>
+                  <h1>10</h1>
+                  <span>地理标志</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 上右 -->
+        <div class="areaviewboxtop-right">
+          <!-- 通用标题 -->
+          <div class="areaviewbox-title">辖区主体产值top6<span>(万元)</span></div>
+          <ul class="areaviewbox-rightul">
+            <li>
+              <div>873</div>
+              <p>开心农场</p>
+            </li>
+            <li>
+              <div>245</div>
+              <p>张景天农场</p>
+            </li>
+            <li>
+              <div>786</div>
+              <p>沅江家庭农场</p>
+            </li>
+            <li>
+              <div>650</div>
+              <p>张景天农场</p>
+            </li>
+            <li>
+              <div>230</div>
+              <p>南京浦口区卞应云家庭农场</p>
+            </li>
+            <li>
+              <div>300</div>
+              <p>南京威远农场</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 中 -->
+      <div class="areaviewbox-in">
+        <ul>
+          <li>
+            <div class="areaviewbox-title">总收入、净利润分布情况</div>
+            <div>
+              <iframe src="echarts/bing_card1hzs.html" frameborder="0" scrolling="no" width="100%"
+                height="100%"></iframe>
+            </div>
+          </li>
+          <li>
+            <div class="areaviewbox-title">经营类型占比</div>
+            <div>
+              <iframe src="echarts/bing_card2hzs.html" frameborder="0" scrolling="no" width="100%"
+                height="100%"></iframe>
+            </div>
+          </li>
+          <li>
+            <div class="areaviewbox-title">经营规模分类统计</div>
+            <div>
+              <iframe src="echarts/bing_card3hzs.html" frameborder="0" scrolling="no" width="100%"
+                height="100%"></iframe>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- 下 -->
+      <div class="areaviewbox-down">
+        <div class="areaviewbox-title down_title">经营产值走势</div>
+        <iframe src="echarts/zxt_card1hzs.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+      </div>
+    </div>
+  </div>
+  <!-- 弹窗 农业龙头企业 -->
+  <div id="box_nyltqy" class="card_mb">
+    <div class="area-viewbox">
+      <!-- 头 -->
+      <div class="areaviewbox-header">
+        <div class="areaviewboxheader-h1">江宁街道</div>
+        <!-- 关闭按钮 -->
+        <div class="areaviewboxheader-none" id="card_imgnyltqy">
+          <img src="./imgs/card_close.png" alt="">
+        </div>
+      </div>
+      <!-- 上 -->
+      <div class="areaviewbox-top">
+        <div class="areaviewboxtop-left">
+          <!-- 通用标题 -->
+          <div class="areaviewbox-title">农业龙头企业情况</div>
+          <div class="areaviewboxtopleft-upper ">
+            <div>
+              <p>1,300</p>
+              <span>农业龙头企业数(家)</span>
+            </div>
+            <div>
+              <p>100</p>
+              <span>本年度新增(家)</span>
+            </div>
+            <div>
+              <p>80</p>
+              <span>纳入金陵惠农贷扶持名录(家)</span>
+            </div>
+          </div>
+          <div class="areaviewboxtopleft-sfqy">
+            <div>
+              <div class="areaviewboxtopleft-h1">
+                <h1>示范企业 <span><i class="bigcu">50</i> 家, 占比<i> 20%</i></span></h1>
+              </div>
+              <div class="areaviewboxtopleft-shuju">
+                <div>
+                  <h1>10</h1>
+                  <span>省级示范</span>
+                </div>
+                <div>
+                  <h1>30</h1>
+                  <span>市级示范</span>
+                </div>
+                <div>
+                  <h1>10</h1>
+                  <span>区级示范</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="areaviewboxtopleft-h1">
+                <h1>二品一标 <span><i class="bigcu">40</i> 家, 占比<i> 20%</i></span></h1>
+              </div>
+              <div class="areaviewboxtopleft-shuju">
+                <div>
+                  <h1>10</h1>
+                  <span>绿色</span>
+                </div>
+                <div>
+                  <h1>30</h1>
+                  <span>有机</span>
+                </div>
+                <div>
+                  <h1>10</h1>
+                  <span>地理标志</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 上右 -->
+        <div class="areaviewboxtop-right">
+          <!-- 通用标题 -->
+          <div class="areaviewbox-title">辖区主体产值top6<span>(万元)</span></div>
+          <ul class="areaviewbox-rightul">
+            <li>
+              <div>873</div>
+              <p>开心农场</p>
+            </li>
+            <li>
+              <div>245</div>
+              <p>张景天农场</p>
+            </li>
+            <li>
+              <div>786</div>
+              <p>沅江家庭农场</p>
+            </li>
+            <li>
+              <div>650</div>
+              <p>张景天农场</p>
+            </li>
+            <li>
+              <div>230</div>
+              <p>南京浦口区卞应云家庭农场</p>
+            </li>
+            <li>
+              <div>300</div>
+              <p>南京威远农场</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 中 -->
+      <div class="areaviewbox-in">
+        <ul>
+          <li>
+            <div class="areaviewbox-title">总收入、净利润分布情况</div>
+            <div>
+              <iframe src="echarts/bing_card1.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </div>
+          </li>
+          <li>
+            <div class="areaviewbox-title">经营类型占比</div>
+            <div>
+              <iframe src="echarts/bing_card2.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </div>
+          </li>
+          <li>
+            <div class="areaviewbox-title">经营规模分类统计</div>
+            <div>
+              <iframe src="echarts/bing_card3.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- 下 -->
+      <div class="areaviewbox-down">
+        <div class="areaviewbox-title down_title">经营产值走势</div>
+        <iframe src="echarts/zxt_card1nyltqy.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  $(".nav-left div").click(function () {
+    var i = $(this).index();
+    $(this).addClass('nav-gtnc').siblings().removeClass('nav-gtnc');
+    $(".tab-mainadd .main-one").eq(i).fadeIn().siblings().hide()
+  })
+  // 跳转接收 家庭农场
+  $('#box', parent.document);
+  // 跳转接收 农民合作社
+  $('#box_hzs', parent.document);
+  // 跳转接收 农业龙头企业
+  $('#box_nyltqy', parent.document);
+
+  // 弹窗关闭 家庭农场
+  $('#card_img').click(function () {
+    $('#box').css('display', 'none')
+  })
+  // 弹窗关闭 农民合作社
+  $('#card_imghzs').click(function () {
+    $('#box_hzs').css('display', 'none')
+  })
+  // 弹窗关闭 农业龙头企业
+  $('#card_imgnyltqy').click(function () {
+    $('#box_nyltqy').css('display', 'none')
+  })
+</script>
+
+</html>

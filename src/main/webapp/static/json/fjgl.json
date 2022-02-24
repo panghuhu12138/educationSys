@@ -1,0 +1,45 @@
+{   
+	"data": [{
+		"shortcut": "images/bg.png",
+		"filename": "微信文件202102301231234",
+		"href": "images/5.jpg",
+		"type3": "png",
+		"size": "100k",
+		"uploadtime": "2021-06-11 18:22:34"
+	}, {
+		"shortcut": "images/word.png",
+		"filename": "微信文件202102301231234",
+		"href": "file/word.doc",
+		"type3": "doc",
+		"size": "400k",
+		"uploadtime": "2021-06-11 18:22:34"
+	}, {
+		"shortcut": "images/exl.png",
+		"filename": "微信文件202102301231234",
+		"href": "file/word.xlsx",
+		"type3": "xls",
+		"size": "50k",
+		"uploadtime": "2021-06-11 18:22:34"
+	}, {
+		"shortcut": "images/pdf.png",
+		"filename": "微信文件202102301231234",
+		"href": "file/word.pdf",
+		"type3": "pdf",
+		"size": "300k",
+		"uploadtime": "2021-06-11 18:22:34"
+	}, {
+		"shortcut": "images/exl.png",
+		"filename": "微信文件202102301231234",
+		"href": "file/word.xlsx",
+		"type3": "xls",
+		"size": "100k",
+		"uploadtime": "2021-06-11 18:22:34"
+	}, {
+		"shortcut": "images/tx.jpg",
+		"filename": "微信文件202102301231234",
+		"href": "images/4.jpg",
+		"type3": "png",
+		"size": "100k",
+		"uploadtime": "2021-06-11 18:22:34"
+	}]
+}

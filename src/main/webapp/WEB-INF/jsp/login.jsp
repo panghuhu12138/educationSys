@@ -107,18 +107,22 @@
 </head>
 
 <body class="center-vh" style="background-color: #fff;">
-  <div class="titlog">朱迪教务管理系统</div>
+  <div class="titlog">教务管理系统</div>
   <div class="card card-shadowed p-5 w-420 mb-0 mr-2 ml-2" id="login">
     <form action="#!" method="post" class="login-form">
       <div class="form-group has-feedback">
         <span class="mdi mdi-account" aria-hidden="true"></span>
-        <input type="text" class="form-control" id="account" value="${account}" placeholder="账号"  style="width: 340px">
+        <input type="text" class="form-control" id="userNum" value="${userNum}" placeholder="学号"  style="width: 340px">
+      </div>
+      <div class="form-group has-feedback" id="usernameDiv" style="display: none">
+        <span class="mdi mdi-account" aria-hidden="true"></span>
+        <input type="text" class="form-control" id="username" placeholder="姓名"  style="width: 340px">
       </div>
       <div class="form-group has-feedback">
         <span class="mdi mdi-lock" aria-hidden="true"></span>
         <input type="password" class="form-control" id="password" style="width: 340px" placeholder="密码长度为8-15且包含字母、数字、特殊字符">
       </div>
-      <div id="captchaDiv" class="form-group has-feedback row" style="display: none">
+      <div id="captchaDiv" class="form-group has-feedback row">
         <div class="col-6" style="padding-right: 0">
           <span class="mdi mdi-check-all form-control-feedback" aria-hidden="true"></span>
           <input type="text" id="code" name="captcha" class="form-control" onkeyup="checkCaptcha()" placeholder="验证码">
@@ -133,9 +137,10 @@
       </div>
     </form>
     <div class="form-group">
-      <button class="btn btn-block btn-primary" onclick="loginIn()"  style="width: 340px">登录</button>
+      <button id="loginBtn" class="btn btn-block btn-primary" onclick="loginIn()"  style="width: 340px">登录</button>
+      <button id="registerBtn" class="btn btn-block btn-primary" onclick="register()"  style="width: 340px; display: none">注册</button>
     </div>
-    <p class="text-left text-muted mb-0 forget">立即注册</p>
+    <p class="text-left text-muted mb-0 forget" id="toRegisterBtn" onclick="toRegister(this)">立即注册</p>
   </div>
 
   <script type="text/javascript" src="<%=request.getContextPath()%>/lib/jquery-1.9.1.min.js"></script>
@@ -195,7 +200,8 @@
             code: $("#code").val()
           },
           success: function (resp) {
-            if (resp.code === 0) {
+            console.log(resp);
+            if (resp.reCorde === 0) {
               $("#checkImg").attr('src',"<%=request.getContextPath()%>/images/icon_true.png");
               $("#isTrue").val(1);
             } else {
@@ -211,10 +217,10 @@
     }
     //登陆
     function loginIn() {
-      const account = $("#account").val().trim();
+      const userNum = $("#userNum").val().trim();
       const password = $("#password").val().trim();
       const code = $("#code").val().trim();
-      if (account.length === 0) {
+      if (userNum.length === 0) {
         alert("账号不能为空！");
         return;
       }
@@ -235,23 +241,77 @@
         url: "<%=request.getContextPath()%>/login/loginIn.do",
         dataType: "json",
         data: {
-          account : account,
+          userNum : userNum,
           password : password,
           code : code
         },
         success: function (resp) {
-          if (resp.code === 0) {
-            window.location.href = "<%=request.getContextPath()%>/main/mainPage.do";
+          if (resp.reCorde === 0) {
+            window.location.replace("<%=request.getContextPath()%>/login/toMainPage.do");
           } else {
             $("#isTrue").val(0);
             alert(resp.msg);
             clear();
-            $("#captchaDiv").show();
             $("#captcha").click();
           }
         }
       })
     }
+
+    //加载注册dom
+    function toRegister(e) {
+      $(e).hide();
+      $("#loginBtn").hide();
+      $("#registerBtn").show();
+      $("#captchaDiv").hide();
+      $("#usernameDiv").show();
+    }
+
+    function toLogin() {
+      $("#toRegisterBtn").show();
+      $("#loginBtn").show();
+      $("#registerBtn").hide();
+      $("#captchaDiv").show();
+      $("#usernameDiv").hide();
+    }
+
+    //注册
+    function register() {
+      const userNum = $("#userNum").val().trim();
+      const password = $("#password").val().trim();
+      const username = $("#username").val().trim();
+      if (userNum.length === 0) {
+        alert("账号不能为空！");
+        return;
+      }
+      if (password.length === 0) {
+        alert("密码不能为空！");
+        return;
+      }
+      if (username.length === 0) {
+        alert("姓名不能为空！");
+        return;
+      }
+      $.ajax({
+        type: "post",
+        url: "<%=request.getContextPath()%>/login/register.do",
+        dataType: "json",
+        data: {
+          userNum : userNum,
+          password : password,
+          username: username
+        },
+        success: function (resp) {
+          console.log(resp);
+          if (resp.reCorde === 0) {
+            toLogin();
+          } else {
+            alert(resp.msg)
+          }
+        }
+      })
+    }
+
     //回车登录
     document.onkeydown = function (event) {
       var e = event || window.event;

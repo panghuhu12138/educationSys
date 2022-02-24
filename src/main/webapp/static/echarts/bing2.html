@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>无标题文档</title>
+		<!--echarts基础js!-->
+		<script type="text/javascript" src="echarts.min.5.0.2.js"></script>
+		<!--echart主题js!-->
+		<script type="text/javascript" src="skin/light.js"></script>
+	</head>
+
+	<body style="margin:0;padding:0">
+		<div id="tb" style="width:100%;height:100%;"></div>
+		<script>
+			//echarts本身有个小问题，其图表容器必须 px 定义宽度高度，不可用百分比，用百分比就不能加载图表，也不能通过取值赋值的形式给图表容器赋值宽度高度
+			//这个方法在echart示例初始化前后做到了可取值来给图表容器赋值
+			var bt = document.getElementById('tb');
+			//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+			var resizebt = function() {
+				bt.style.width = window.innerWidth + 'px';
+				bt.style.height = window.innerHeight + 'px';
+			};
+			//设置容器高宽
+			resizebt();
+			// 基于准备好的dom，初始化echarts实例
+			var btchart = echarts.init(bt, 'light');
+
+			btchart.setOption({
+				tooltip: {
+				        trigger: 'item',
+				        formatter: '{b}<br/> {c} 家'
+				    },
+				series: [{
+					name: '交易类型分析',
+					type: 'pie',
+					radius: ['45%', '61%'],
+					center: ['50%', '50%'],
+					itemStyle: {
+						borderColor: '#fff',
+						borderWidth: 1
+					},
+					label: {
+						formatter: '{b}({c})',
+						lineHeight: 25,
+						rich: {
+							time: {
+								fontSize: 12,
+								color: '#666'
+							}
+						}
+					},
+					labelLine: {
+						length: 15,
+					},
+					data: [
+						{value: 5315,name: '家庭农场'},
+						{value: 6214,name: '农民合作社'},
+						{value: 1200,name: '专业大户'},
+						{value: 950,name: '农业产业化企业'},
+						{value: 198,name: '农业社会化服务'}
+					],
+					}]
+			})
+			//用于使chart自适应高度和宽度
+			window.onresize = function() {
+				//重置容器高宽
+				resizebt();
+				btchart.resize();
+			};
+		</script>
+	</body>
+</html>

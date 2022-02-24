@@ -1,0 +1,29 @@
+{
+  "total": 18,
+  "data": [{
+    "name": "开心农场",
+    "tel": "18913920873",
+    "address": "江宁区湖熟街道",
+    "year": "2021",
+    "totalArea": 100,
+    "cbarea": 10,
+    "lzarea": 90,
+    "totalValue": 1000,
+    "freshValue": 190,
+    "strain": "小麦、水稻",
+    "type": "种养结合",
+    "status": "待街道审核"
+  }, {
+    "name": "幸福农场",
+    "tel": "18913920873",
+    "address": "江宁区湖熟街道",
+    "year": "2020",
+    "totalArea": 100,
+    "cbarea": 10,
+    "lzarea": 90,
+    "totalValue": 1000,
+    "freshValue": 190,
+    "type": "种养结合",
+    "strain": "小麦、水稻"
+  }]
+}

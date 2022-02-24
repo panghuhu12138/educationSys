@@ -1474,7 +1474,7 @@ opacity:0
 	position: relative;
 	margin: 0;
 	padding-left: 0;
-	background-color: #1e6eb9
+	background-color: #001529
 }
 .el-menu--horizontal>.el-menu-item:not(.is-disabled):focus, .el-menu--horizontal>.el-menu-item:not(.is-disabled):hover, .el-menu--horizontal>.el-submenu .el-submenu__title:hover {
 	background-color: #fff
@@ -1537,7 +1537,7 @@ opacity:0
 	color: #909399
 }
 .el-menu--horizontal .el-menu .el-menu-item.is-active, .el-menu--horizontal .el-menu .el-submenu.is-active>.el-submenu__title {
-	color: #303133;
+	color: #303133
 }
 .el-menu--horizontal .el-menu-item:not(.is-disabled):focus, .el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
 	outline: 0;
@@ -1627,7 +1627,7 @@ opacity:0
 	outline: 0;
 }
 .el-menu-item:hover {
-	background-color: #135898
+	background-color: #1390ff
 }
 .el-menu-item.is-disabled {
 	opacity: .25;
@@ -1643,7 +1643,8 @@ opacity:0
 }
 /*不带下级导航 点击后字体颜色*/
 .el-menu-item.is-active {
-	color: #fcff00
+	color: #fff;
+  background: #1390ff !important;
 }
 .el-menu-item.is-active i {
 	color: inherit
@@ -1673,7 +1674,7 @@ opacity:0
 /*带下级导航 焦点背景颜色*/
 .el-submenu__title:focus, .el-submenu__title:hover {
 	outline: 0;
-	background-color: #135898
+	background-color: #1390ff
 }
 .el-submenu__title.is-disabled {
 	opacity: .25;
@@ -1681,7 +1682,7 @@ opacity:0
 	background: 0 0!important
 }
 .el-submenu__title:hover {
-	background-color: #135898
+	background-color: #1390ff
 }
 .el-submenu .el-menu {
 	border: none
@@ -1712,19 +1713,19 @@ opacity:0
 }
 /*带下级导航展开 下级菜单背景颜色*/
 .el-submenu.is-opened .el-menu-item,.el-submenu.is-opened .el-submenu .el-submenu__title {
-	background-color: #135898;
+	background-color: #000c19;
 }
 /*带下级导航展开 下级菜单悬停背景色*/
 .el-submenu.is-opened .el-menu-item:hover,.el-submenu.is-opened .el-submenu__title:hover {
-	background-color: #0d4980;
+	background-color: #1390ff;
 }
 /*带下级导航展开 下级菜单背景颜色*/
 .el-submenu.is-opened .el-submenu.is-opened .el-menu-item,.el-submenu.is-opened .el-submenu.is-opened .el-submenu__title {
-	background-color: #0d4980;
+	background-color: #000c19;
 }
 /*带下级导航展开 下级菜单悬停背景色*/
 .el-submenu.is-opened .el-menu-item:hover,.el-submenu.is-opened .el-submenu__title:hover {
-	background-color: #0d4980;
+	background-color: #1390ff;
 }
 
 .el-submenu.is-disabled .el-menu-item, .el-submenu.is-disabled .el-submenu__title {
@@ -2572,13 +2573,13 @@ opacity:0
 	background: #f9f9f9
 }
 .el-table--striped .el-table__body tr.el-table__row--striped.current-row td {
-	background-color: #a3e0ff
+	background-color: rgba(19, 145, 255, 0.4) 
 }
 .el-table__body tr.hover-row.current-row>td, .el-table__body tr.hover-row.el-table__row--striped.current-row>td, .el-table__body tr.hover-row.el-table__row--striped>td, .el-table__body tr.hover-row>td {
 	background-color: #ecf5ff
 }
 .el-table__body tr.current-row>td {
-	background-color: #a3e0ff
+	background-color: rgba(19, 145, 255, 0.4) 
 }
 .el-table__column-resize-proxy {
 	position: absolute;
@@ -4115,12 +4116,12 @@ opacity:0
 	color: #FFF
 }
 .el-tabs__item.is-active {
-	color: #098fdc;
+	color:#1390ff;
 	background-color: #fff;
 	font-weight:bold;
 }
 .el-tabs__item:hover {
-	color: #098fdc;
+  color:#1390ff;
 	cursor: pointer
 }
 .el-tabs__item.is-disabled {
@@ -4594,7 +4595,7 @@ opacity:0
 	outline: 0
 }
 .el-tree-node:focus>.el-tree-node__content {
-	background-color: #ebf3f8
+	background-color: rgba(19, 145, 255, 0.4)
 }
 .el-tree-node.is-drop-inner>.el-tree-node__content .el-tree-node__label {
 	background-color: #1e6eb9;
@@ -10654,10 +10655,10 @@ height:0
 	right: 0;
 	height: 0;
 	bottom: 0;
-	border-bottom: 1px solid #098fdc
+	border-bottom: 1px solid #1390ff
 }
 .el-link.el-link--default:after, .el-link.el-link--primary.is-underline:hover:after, .el-link.el-link--primary:after {
-	border-color: #098fdc
+	border-color: #1390ff
 }
 .el-link.is-disabled {
 	cursor: not-allowed
@@ -10669,13 +10670,13 @@ height:0
 	color: #494a4b
 }
 .el-link.el-link--default:hover {
-	color: #098fdc
+	color: #1390ff
 }
 .el-link.el-link--default.is-disabled {
 	color: #C0C4CC
 }
 .el-link.el-link--primary {
-	color: #098fdc
+	color: #1390ff
 }
 .el-link.el-link--primary:hover {
 	color: #66b1ff
@@ -11067,8 +11068,8 @@ border:0
 }
 .el-button--primary {
 	color: #FFF;
-	background-color: #098fdc;
-	border-color: #098fdc
+	background-color: #1390ff;
+	border-color: #1390ff
 }
 .el-button--primary:focus, .el-button--primary:hover {
 	background: #197fdf;
@@ -11089,9 +11090,9 @@ border:0
 	border-color: #a0cfff
 }
 .el-button--primary.is-plain {
-	color: #098fdc;
+	color: #1390ff;
 	background: #ecf5ff;
-	border-color: #098fdc
+	border-color: #1390ff
 }
 .el-button--primary.is-plain:focus, .el-button--primary.is-plain:hover {
 	background: #098fdc;
@@ -11316,7 +11317,7 @@ border:0
 	padding: 7px
 }
 .el-button--text {
-	color: #098fdc;
+	color: #1390ff;
 	background: 0 0;
 	padding-left: 0;
 	padding-right: 0

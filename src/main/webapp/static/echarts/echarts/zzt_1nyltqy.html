@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <!--echarts基础js!-->
+    <script type="text/javascript" src="../js/echarts.js"></script>
+    <script type="text/javascript">
+        // $(window).resize(function () {
+        //     //图表容器宽高赋值
+        //     $("#tb").css("width", $(window).width());
+        //     $("#tb").css("height", $(window).height());
+        // });
+        // $(window).ready(function () {
+        //     $("#tb").css("width", $(window).width());
+        //     $("#tb").css("height", $(window).height());
+        // });
+    </script>
+</head>
+
+<body style="margin:0;padding:0">
+    <div id="tb"></div>
+    <script>
+        //echarts本身有个小问题，其图表容器必须 px 定义宽度高度，不可用百分比，用百分比就不能加载图表，也不能通过取值赋值的形式给图表容器赋值宽度高度
+        //这个方法在echart示例初始化前后做到了可取值来给图表容器赋值
+
+        var bt = document.getElementById('tb');
+        //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+        var resizebt = function () {
+            bt.style.width = window.innerWidth + 'px';
+            bt.style.height = window.innerHeight + 'px';
+        };
+        //设置容器高宽
+        resizebt();
+        // 基于准备好的dom，初始化echarts实例
+        var btchart = echarts.init(bt, 'halloween');
+        var data1 = [81, 79, 76, 55, 52, 49];
+        var xData = ['鼓楼', '江宁', '六合', '溧水', '浦口', '栖霞']
+        btchart.setOption({
+            title: [{
+                    text: '数量(个)',
+                    x: '12%',
+                    y: '8%',
+                    textAlign: 'center',
+                    textStyle: {
+                        fontSize: '14',
+                        fontWeight: '100',
+                        color: '#fff',
+                        textAlign: 'center',
+                    },
+                },
+            ],
+            tooltip: { //hover悬浮框
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow',
+                    textStyle: {
+                        color: '#05294D',
+                    },
+                },
+                backgroundColor: '#fff',
+                borderColor: '#3EA1FF',
+                borderWidth: 1,
+                padding: [20, 20, 20, 20],
+            },
+            grid: {   //整体大小位置
+                borderWidth: 0,
+                top: '25%',
+                left: '55',
+                bottom: '15%',
+                textStyle: {
+                    color: '#fff',
+                },
+            },
+            // legend: {  //头部
+            //     top: '0%',
+            //     right: '10%',
+            //     textStyle: {
+            //         fontSize: '20px',
+            //         fontFamily: 'MicrosoftYaHeiUI',
+            //         color: '#FFFFFF',
+            //     },
+            //     itemWidth: 28,
+            //     itemHeight: 28,
+            // },
+            xAxis: [{
+                type: 'category',
+                axisLine: {
+                    lineStyle: {
+                        color: '#fff', //底部横线
+                    },
+                },
+                splitLine: {
+                    show: false,
+                },
+                axisTick: {
+                    show: false,
+                },
+                splitArea: {
+                    show: false,
+                },
+                axisLabel: {
+                    interval: 0,
+                    color: '#fff',
+                    fontSize: 10,
+                },
+                data: xData,
+            }, ],
+            yAxis: [{
+                type: 'value',
+                splitNumber: 5,
+                splitLine: {  //刻度
+                    show: true,
+                    lineStyle: {
+                        color: '#2e5bc2', 
+                    },
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#fff', //底部横线
+                    },
+                },
+                axisTick: {
+                    show: false,
+                },
+                axisLabel: {
+                    interval: 0,
+                    color: '#fff',
+                    fontSize: 10,
+                },
+                splitArea: {
+                    show: false,
+                },
+            }, ],
+            series: [{
+                name: '周转量',
+                type: 'bar',
+                // "stack": "总量",
+                barMaxWidth: 15, //柱子的宽
+                barGap: '10%',
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: true, //开启显示
+                            position: 'top', //在上方显示
+                            textStyle: { //数值样式
+                                color: '#fff',
+                                fontSize: 10
+                            }
+                        },
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                    offset: 0,
+                                    color: '#00daff', // 0% 处的颜色
+                                },
+                                {
+                                    offset: 1,
+                                    color: '#038ff3', // 100% 处的颜色
+                                },
+                            ],
+                            global: false, // 缺省为 false
+                        },
+                    },
+                },
+                data: data1,
+            }, ],
+        })
+        //用于使chart自适应高度和宽度
+        window.onresize = function () {
+            //重置容器高宽
+            resizebt();
+            btchart.resize();
+        };
+    </script>
+</body>
+
+</html>

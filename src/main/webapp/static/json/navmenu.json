@@ -1,0 +1,25 @@
+{
+  "menus": [{
+      "name": "教务管理",
+      "id": "1",
+      "iconClass": "fal fa-cabinet-filing",
+      "children": [{
+          "name": "学生选课",
+          "id": "1-1",
+          "url": "主体信息管理.html"
+        }
+      ]
+    },
+    {
+      "name": "系统管理",
+      "id": "2",
+      "iconClass": "el-icon-setting",
+      "children": [{
+        "name": "用户管理",
+        "id": "2-1",
+        "url": "/Demo_war_exploded/user/toUserManager.do"
+      }]
+    }
+
+  ]
+}

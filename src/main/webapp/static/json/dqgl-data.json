@@ -1,0 +1,28 @@
+{
+  "total": 3,
+  "data": [{
+    "xnumber": "32",
+    "upper": "————",
+    "name": "江苏省",
+    "level": "省",
+    "ms": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "tag": "停用",
+    "status": "info"
+  }, {
+    "xnumber": "3201",
+    "upper": "江苏省",
+    "name": "南京市",
+    "level": "市",
+    "ms": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "tag": "正常",
+    "status": "success"
+  }, {
+    "xnumber": "2312332135354",
+    "upper": "苏州市高新区",
+    "name": "学府社区",
+    "level": "村/居",
+    "ms": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "tag": "正常",
+    "status": "success"
+  }]
+}

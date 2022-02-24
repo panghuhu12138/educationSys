@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dao.UserMapper">
+    <resultMap id="UserMap" type="Entity.User">
+        <id column="user_id" jdbcType="VARCHAR" property="userId" />
+        <result column="user_name" jdbcType="VARCHAR" property="username" />
+        <result column="user_num" jdbcType="VARCHAR" property="userNum" />
+        <result column="user_password" jdbcType="VARCHAR" property="password" />
+        <result column="user_identity" jdbcType="INTEGER" property="identity" />
+        <result column="user_status" jdbcType="INTEGER" property="status" />
+    </resultMap>
+
+    <!-- 基本字段 -->
+    <sql id="Base_Column_List">
+        user_id,user_num,user_name,user_password,user_identity,user_status,phone
+    </sql>
+    <!-- 基本查询条件 -->
+    <sql id="Query_Items">
+        <if test="userId != null and userId != ''">
+            and user_id = #{userId}
+        </if>
+        <if test="userNum != null and userNum != ''">
+            and user_num = #{userNum}
+        </if>
+        <if test="username != null and username != ''">
+            and user_name = #{username}
+        </if>
+        <if test="password != null and password != ''">
+            and user_password = #{password}
+        </if>
+        <if test="identity != null and identity != ''">
+            and user_identity = #{identity}
+        </if>
+        <if test="status != null and status != ''">
+            and user_status = #{status}
+        </if>
+    </sql>
+
+
+    <insert id="insert" parameterType="Entity.User">
+        insert into user(user_id, user_num, user_name, user_password, user_identity, user_status, phone) value
+            (#{userId}, #{userNum}, #{username}, #{password}, #{identity}, #{status}, #{phone})
+    </insert>
+    <update id="update" parameterType="Entity.User">
+        update user
+        <set >
+            <if test="userNum != null">
+                user_num = #{userNum},
+            </if>
+            <if test="username != null">
+                user_name = #{username},
+            </if>
+            <if test="password != null">
+                user_password = #{password},
+            </if>
+            <if test="identity != null">
+                user_identity = #{identity},
+            </if>
+            <if test="status != null">
+                user_status = #{status},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
+    <update id="updateAll" parameterType="java.util.List">
+        <foreach collection="list" item="data" separator=";">
+            update user
+            <set >
+                <if test="data.userNum != null">
+                    user_num = #{data.userNum},
+                </if>
+                <if test="data.username != null">
+                    user_name = #{data.username},
+                </if>
+                <if test="data.password != null">
+                    user_password = #{data.password},
+                </if>
+                <if test="data.identity != null">
+                    user_identity = #{data.identity},
+                </if>
+                <if test="data.status != null">
+                    user_status = #{data.status},
+                </if>
+                <if test="data.phone != null">
+                    phone = #{data.phone},
+                </if>
+            </set>
+            where user_id = #{data.userId}
+        </foreach>
+    </update>
+
+    <delete id="deleteAll" parameterType="String">
+        delete from user
+        where
+        user_id in
+        <foreach close=")" collection="list" item="id" open="(" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <select id="find" resultMap="UserMap" parameterType="Entity.User">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        <where>
+            <include refid="Query_Items"/>
+        </where>
+    </select>
+
+    <select id="findAll" resultMap="UserMap" parameterType="Entity.User">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        <where>
+            <include refid="Query_Items"/>
+        </where>
+    </select>
+    <select id="findAllExcludeSessionUser" resultMap="UserMap" resultType="Entity.User">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        <where>
+            <if test="userId != null and userId != ''">
+                and user_id not in ('${userId}')
+            </if>
+            <if test="userNum != null and userNum != ''">
+                and user_num = #{userNum}
+            </if>
+            <if test="username != null and username != ''">
+                and user_name = #{username}
+            </if>
+            <if test="password != null and password != ''">
+                and user_password = #{password}
+            </if>
+            <if test="identity != null and identity != ''">
+                and user_identity = #{identity}
+            </if>
+            <if test="status != null and status != ''">
+                and user_status = #{status}
+            </if>
+        </where>
+    </select>
+</mapper>

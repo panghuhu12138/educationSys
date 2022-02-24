@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<!--echarts基础js!-->
+<script type="text/javascript" src="echarts.min.5.0.2.js"></script>
+<!--echart主题js!-->
+<script type="text/javascript" src="skin/light.js"></script>
+</head>
+
+<body style="margin:0;padding:0">
+<div id="tb" style="width:100%;height:100%;"></div>
+<script>
+//echarts本身有个小问题，其图表容器必须 px 定义宽度高度，不可用百分比，用百分比就不能加载图表，也不能通过取值赋值的形式给图表容器赋值宽度高度
+//这个方法在echart示例初始化前后做到了可取值来给图表容器赋值
+   
+   var bt = document.getElementById('tb');
+//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+var resizebt = function () {
+    bt.style.width = window.innerWidth +'px';
+	bt.style.height = window.innerHeight +'px';
+};
+//设置容器高宽
+resizebt();
+// 基于准备好的dom，初始化echarts实例
+var btchart = echarts.init(bt,'light');
+
+btchart.setOption({
+	tooltip: {
+        trigger: 'axis',
+		textStyle:{
+			fontSize:12,			
+		}
+    },
+    xAxis: [
+        {
+			type: 'category',
+			splitLine:{
+			show:false
+			}, 
+			data: ['南京','无锡','徐州','常州','苏州','南通','连云港','淮安','盐城','扬州','镇江','泰州','宿迁'],
+            axisPointer: {
+                type: 'shadow'
+            },
+			axisLabel: { interval: 0, rotate: 45 }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+	grid: {
+        left:'10%',
+        right:'9%',
+        bottom:'12%',
+		top:'7%',
+        containLabel: false,		
+    },
+    series: [
+        {
+            name:'预警数量',
+            type:'bar',	
+            data:[430, 505, 380, 300, 150, 350, 490, 605, 310, 304, 252, 650, 430],
+			showBackground: true,
+			backgroundStyle: {
+			color:'#EBEEF5'
+			},
+			markLine: {
+			    data: [
+			    {type: 'average', name: '平均值'}
+			    ]
+			},
+			label: {
+                show: true,
+                position: 'top',
+				fontSize:10
+            },
+			itemStyle:{
+				borderRadius: [10, 10, 0, 0]
+			},
+			barMaxWidth:'45%',		
+        },
+    ]
+})
+//用于使chart自适应高度和宽度
+window.onresize = function () {
+    //重置容器高宽
+    resizebt();
+    btchart.resize();
+};
+</script>
+</body>
+</html>

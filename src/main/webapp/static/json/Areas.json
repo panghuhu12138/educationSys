@@ -1,0 +1,46 @@
+{
+	"Areas": [{
+		"title": "玄武区",
+		"percentage": 15
+	},
+	{
+		"title": "鼓楼区",
+		"percentage": 19
+	},
+	{
+		"title": "建邺区",
+		"percentage": 20
+	},
+	{
+		"title": "秦淮区",
+		"percentage": 25
+	},
+	{
+		"title": "浦口区",
+		"percentage": 33
+	},
+	{
+		"title": "栖霞区",
+		"percentage": 38
+	},
+	{
+		"title": "雨花台区",
+		"percentage": 42
+	},
+	{
+		"title": "江宁区",
+		"percentage": 52
+	},
+	{
+		"title": "六合区",
+		"percentage": 63
+	},
+	{
+		"title": "高淳区",
+		"percentage": 72
+	},
+	{
+		"title": "溧水区",
+		"percentage": 68
+	}]
+}
