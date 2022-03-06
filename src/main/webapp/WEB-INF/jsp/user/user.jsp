@@ -1,28 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <!-- 引入elementUI自带样式 -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/lib/theme-chalk/index.css">
-    <!-- 引入自定义样式 -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/lib/theme/main.css">
-    <!-- 引入Font Awesome字体图标样式 http://www.fontawesome.com.cn/v5/-->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/lib/theme/FA5Pro/css/all.min.css">
-    <!-- 引入vue -->
-    <script src="<%=request.getContextPath()%>/lib/vue.min.js"></script>
-    <!-- 引入ajax -->
-    <script src="<%=request.getContextPath()%>/lib/axios.min.js"></script>
-    <!-- 引入组件库 -->
-    <script src="<%=request.getContextPath()%>/lib/index.js"></script>
-    <![if IE]>
-    <script src="<%=request.getContextPath()%>/lib/polyfill.min.js"></script>
-    <script src="<%=request.getContextPath()%>/lib/compatible.js"></script>
-    <![endif]>
+    <%@ include file="../head.jsp" %>
     <title>用户管理</title>
     <style>
         .el-badge sup {
@@ -160,7 +140,7 @@
         <!--分页:total="tableData.length来取共有多少条数据"-->
         <!--分页参数https://element.eleme.cn/#/zh-CN/component/pagination"-->
         <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
-                       :page-sizes="[30, 60, 90]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+                       :page-sizes="[10, 20, 50]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
                        :total="total">
         </el-pagination>
     </div>
@@ -263,7 +243,7 @@
                     // 选中的数据userId都拼成字符串
                     for (let i = 0; i < snum; i++) {
                         idStr = idStr + this.multipleSelection[i].userId + ",";
-                    };
+                    }
                     this.$confirm('是否对这' + snum + '条数据进行密码重置？重置后不可恢复，请确认！', '重置确认', {
                         confirmButtonText: '确定',
                         cancelButtonText: '取消',
@@ -280,7 +260,6 @@
                                 confirmButtonText: '确定',
                                 type: 'success'
                             })
-                          this.refreshiframe('用户管理');
                         })
                     })
                 } else {
@@ -300,7 +279,8 @@
                 this.getTableData();
             },
             handleCurrentChange: function (val) {
-                this.pageNum = val
+                this.pageNum = val;
+              this.pageSize = 10;
                 this.getTableData();
             },
             handleSelectionChange: function (val) {

@@ -1,4 +1,4 @@
-package utils;
+package Utils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.awt.*;

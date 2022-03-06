@@ -119,6 +119,7 @@
         <where>
             <include refid="Query_Items"/>
         </where>
+        order by user_num
     </select>
     <select id="findAllExcludeSessionUser" resultMap="UserMap" resultType="Entity.User">
         select
@@ -132,7 +133,7 @@
                 and user_num = #{userNum}
             </if>
             <if test="username != null and username != ''">
-                and user_name = #{username}
+                and user_name like '%${username}%'
             </if>
             <if test="password != null and password != ''">
                 and user_password = #{password}
@@ -144,5 +145,6 @@
                 and user_status = #{status}
             </if>
         </where>
+        order by user_num
     </select>
 </mapper>

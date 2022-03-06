@@ -1,7 +1,7 @@
 /**
  * ErrorCodeEnum.java
  */
-package utils;
+package Utils;
 
 /**
  * @author jinzf

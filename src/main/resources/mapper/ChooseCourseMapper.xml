@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dao.ChooseCourseMapper">
+  <resultMap id="BaseResultMap" type="Entity.ChooseCourse">
+    <id column="choose_course_id" jdbcType="VARCHAR" property="chooseCourseId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="course_id" jdbcType="VARCHAR" property="courseId" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="grade_id" jdbcType="VARCHAR" property="gradeId" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="course_name" jdbcType="VARCHAR" property="courseName" />
+    <result column="course_num" jdbcType="VARCHAR" property="courseNum" />
+    <result column="course_credit" jdbcType="TINYINT" property="courseCredit" />
+    <result column="user_name" jdbcType="VARCHAR" property="teacherName" />
+    <result column="phone" jdbcType="VARCHAR" property="teacherPhone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    choose_course_id, user_id, course_id, status, reason, grade_id, insert_time
+  </sql>
+  <!-- 基本查询条件 -->
+  <sql id="Query_Items">
+    <if test="chooseCourseId != null and chooseCourseId != ''">
+      and choose_course_id = #{chooseCourseId}
+    </if>
+    <if test="userId != null and userId != ''">
+      and user_id = #{userId}
+    </if>
+    <if test="courseId != null and courseId != ''">
+      and course_id = #{courseId}
+    </if>
+    <if test="status != null and status != ''">
+      and status = #{status}
+    </if>
+    <if test="reason != null and reason != ''">
+      and reason = #{reason}
+    </if>
+    <if test="gradeId != null and gradeId != ''">
+      and grade_id = #{gradeId}
+    </if>
+    <if test="insertTime != null and insertTime != ''">
+      and insert_time = #{insertTime}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from choose_course
+    where choose_course_id = #{chooseCourseId,jdbcType=VARCHAR}
+  </select>
+  <select id="findAll" parameterType="Map" resultMap="BaseResultMap">
+    select a.*,
+           b.course_name,
+           b.course_num,
+           b.course_credit,
+           c.user_name,
+           c.phone
+    from choose_course a
+           left join course b on b.course_id = a.course_id
+           left join user c on c.user_id = b.teacher_id
+    where a.user_id = #{userId}
+    <if test="courseName != null and courseName != ''">
+      and b.course_name like '%${courseName}%'
+    </if>
+    <if test="status != null and status != ''">
+      and a.status = #{status}
+    </if>
+    order by course_num
+  </select>
+  <select id="findAllChosenCourses" parameterType="String" resultType="java.lang.String">
+    select a.course_id
+    from choose_course a
+    where a.user_id = #{userId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from choose_course
+    where choose_course_id = #{chooseCourseId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="Entity.ChooseCourse">
+    insert into choose_course (choose_course_id, user_id, course_id, 
+      status, reason, grade_id, 
+      insert_time)
+    values (#{chooseCourseId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{reason,jdbcType=VARCHAR}, #{gradeId,jdbcType=VARCHAR}, 
+      #{insertTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="Entity.ChooseCourse">
+    insert into choose_course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="chooseCourseId != null">
+        choose_course_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="gradeId != null">
+        grade_id,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="chooseCourseId != null">
+        #{chooseCourseId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null">
+        #{gradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertAll" parameterType="List">
+    insert into choose_course (choose_course_id, user_id, course_id,
+                               status, reason, grade_id,
+                               insert_time)
+    values
+    <foreach collection="list" separator="," item="data">
+      (
+       #{data.chooseCourseId,jdbcType=VARCHAR},
+       #{data.userId,jdbcType=VARCHAR},
+       #{data.courseId,jdbcType=VARCHAR},
+       #{data.status,jdbcType=TINYINT},
+       #{data.reason,jdbcType=VARCHAR},
+       #{data.gradeId,jdbcType=VARCHAR},
+       #{data.insertTime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Entity.ChooseCourse">
+    update choose_course
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null">
+        grade_id = #{gradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where choose_course_id = #{chooseCourseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Entity.ChooseCourse">
+    update choose_course
+    set user_id = #{userId,jdbcType=VARCHAR},
+      course_id = #{courseId,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      reason = #{reason,jdbcType=VARCHAR},
+      grade_id = #{gradeId,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP}
+    where choose_course_id = #{chooseCourseId,jdbcType=VARCHAR}
+  </update>
+</mapper>

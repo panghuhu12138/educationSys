@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dao.GradeMapper">
+  <resultMap id="BaseResultMap" type="Entity.Grade">
+    <id column="grade_id" jdbcType="VARCHAR" property="gradeId" />
+    <result column="choose_course_id" jdbcType="VARCHAR" property="chooseCourseId" />
+    <result column="daily_grade" jdbcType="TINYINT" property="dailyGrade" />
+    <result column="midterm_grade" jdbcType="TINYINT" property="midtermGrade" />
+    <result column="endterm_grade" jdbcType="TINYINT" property="endtermGrade" />
+    <result column="point" jdbcType="TINYINT" property="point" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    grade_id, choose_course_id, daily_grade, midterm_grade, endterm_grade, point
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from grade
+    where grade_id = #{gradeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from grade
+    where grade_id = #{gradeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="Entity.Grade">
+    insert into grade (grade_id, choose_course_id, daily_grade, 
+      midterm_grade, endterm_grade, point
+      )
+    values (#{gradeId,jdbcType=VARCHAR}, #{chooseCourseId,jdbcType=VARCHAR}, #{dailyGrade,jdbcType=TINYINT}, 
+      #{midtermGrade,jdbcType=TINYINT}, #{endtermGrade,jdbcType=TINYINT}, #{point,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="Entity.Grade">
+    insert into grade
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gradeId != null">
+        grade_id,
+      </if>
+      <if test="chooseCourseId != null">
+        choose_course_id,
+      </if>
+      <if test="dailyGrade != null">
+        daily_grade,
+      </if>
+      <if test="midtermGrade != null">
+        midterm_grade,
+      </if>
+      <if test="endtermGrade != null">
+        endterm_grade,
+      </if>
+      <if test="point != null">
+        point,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gradeId != null">
+        #{gradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="chooseCourseId != null">
+        #{chooseCourseId,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyGrade != null">
+        #{dailyGrade,jdbcType=TINYINT},
+      </if>
+      <if test="midtermGrade != null">
+        #{midtermGrade,jdbcType=TINYINT},
+      </if>
+      <if test="endtermGrade != null">
+        #{endtermGrade,jdbcType=TINYINT},
+      </if>
+      <if test="point != null">
+        #{point,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Entity.Grade">
+    update grade
+    <set>
+      <if test="chooseCourseId != null">
+        choose_course_id = #{chooseCourseId,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyGrade != null">
+        daily_grade = #{dailyGrade,jdbcType=TINYINT},
+      </if>
+      <if test="midtermGrade != null">
+        midterm_grade = #{midtermGrade,jdbcType=TINYINT},
+      </if>
+      <if test="endtermGrade != null">
+        endterm_grade = #{endtermGrade,jdbcType=TINYINT},
+      </if>
+      <if test="point != null">
+        point = #{point,jdbcType=TINYINT},
+      </if>
+    </set>
+    where grade_id = #{gradeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Entity.Grade">
+    update grade
+    set choose_course_id = #{chooseCourseId,jdbcType=VARCHAR},
+      daily_grade = #{dailyGrade,jdbcType=TINYINT},
+      midterm_grade = #{midtermGrade,jdbcType=TINYINT},
+      endterm_grade = #{endtermGrade,jdbcType=TINYINT},
+      point = #{point,jdbcType=TINYINT}
+    where grade_id = #{gradeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

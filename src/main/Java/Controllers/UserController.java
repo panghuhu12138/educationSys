@@ -1,6 +1,5 @@
 package Controllers;
 
-import Entity.Student;
 import Entity.User;
 import Service.IUserService;
 import com.github.pagehelper.PageHelper;
@@ -10,11 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import utils.ApiResult;
-import utils.UUIDUtils;
+import Utils.ApiResult;
+import Utils.UUIDUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +33,7 @@ public class UserController {
     //用户管理页面
     @RequestMapping("/toUserManager")
     public String toUserManager(){
-        return "user";
+        return "user/user";
     }
 
     /**
@@ -43,7 +41,7 @@ public class UserController {
      */
     @RequestMapping("toUserEdit")
     public String toUserEdit(){
-        return "userEdit";
+        return "user/userEdit";
     }
 
     //用户管理页面
@@ -67,10 +65,16 @@ public class UserController {
     //更新用户信息
     @RequestMapping("/editUser")
     @ResponseBody
-    public ApiResult editUser(@RequestBody User user){
+    public ApiResult editUser(@RequestBody final User user){
         if(user.getUserId() != null && (!"".equals(user.getUserId()))) {
             userService.update(user);
         } else {
+            User exitUser = userService.find(new User() {{
+                this.setUserNum(user.getUserNum());
+            }});
+            if (exitUser != null) {
+                return ApiResult.failed("新增学号已存在！");
+            }
             user.setUserId(UUIDUtils.getUUID());
             user.setPassword(ResourceBundle.getBundle("system").getString("initPwd"));
             userService.insert(user);

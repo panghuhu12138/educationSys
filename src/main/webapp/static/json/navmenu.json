@@ -6,6 +6,11 @@
       "children": [{
           "name": "学生选课",
           "id": "1-1",
+          "url": "/Demo_war_exploded/chooseCourse/toChooseCourseInfo.do"
+        },
+        {
+          "name": "我的课程",
+          "id": "1-2",
           "url": "主体信息管理.html"
         }
       ]

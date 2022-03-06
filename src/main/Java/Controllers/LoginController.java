@@ -2,18 +2,16 @@ package Controllers;
 
 import Entity.User;
 import Service.IUserService;
-import org.apache.logging.log4j.core.util.UuidUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import utils.ApiResult;
-import utils.ImgCheckCode;
-import utils.UUIDUtils;
+import Utils.ApiResult;
+import Utils.ImgCheckCode;
+import Utils.UUIDUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.UUID;
 
 
 @Controller
@@ -31,19 +29,19 @@ public class LoginController {
     @RequestMapping("/loginpage")
     public String login(HttpServletRequest request, ModelMap modelMap) {
         modelMap.addAttribute("userNum", request.getParameter("userNum"));
-        return "login";
+        return "login/login";
     }
 
     /*跳转到主页面*/
     @RequestMapping("/toMainPage")
     public String toMainPage() {
-        return "main";
+        return "login/main";
     }
 
     /*刷新验证码*/
     @RequestMapping("/getCodeImg")
     public String executeImage() {
-        return "image";
+        return "login/image";
     }
 
     /*校验验证码*/
@@ -117,6 +115,6 @@ public class LoginController {
     public String loginOut(HttpServletRequest request) {
         System.out.println(request.getSession().getAttribute("user"));
         request.getSession().removeAttribute("user");
-        return "login";
+        return "login/login";
     }
 }

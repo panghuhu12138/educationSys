@@ -304,6 +304,7 @@
         success: function (resp) {
           console.log(resp);
           if (resp.reCorde === 0) {
+            alert('注册成功！')
             toLogin();
           } else {
             alert(resp.msg)

@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-	<%@ include file="./head.jsp" %>
+	<%@ include file="../head.jsp" %>
 	<title>教务管理系统</title>
 	<style>
 		.el-badge__content.is-fixed {
@@ -166,11 +166,11 @@
 				<!--头部-->
 				<el-header style="height:38px;padding:0;margin-bottom:7px;">
 					<div class="col-icon"><i @click="change" v-bind:class="handClass" title="侧边栏收起"></i></div>
-					<div class="sys-title">教务管理系统管理系统</div>
+					<div class="sys-title">教务管理系统</div>
 					<div class="logout">
 						<el-dropdown class="user-head-drop">
 							<!--头像、用户下拉-->
-							<el-button type="text" size="small"><i class="el-icon-user"></i>${sessionScope.user.username},<i
+							<el-button type="text" size="small"><i class="el-icon-user"></i>${sessionScope.user.username}<i
 									class="el-icon-caret-bottom"></i></el-button>
 							<el-dropdown-menu slot="dropdown">
 								<!-- 下拉菜单内click事件必须是@click.native -->

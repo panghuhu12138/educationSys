@@ -1,28 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <!-- 引入elementUI自带样式 -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/lib/theme-chalk/index.css">
-    <!-- 引入自定义样式 -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/lib/theme/main.css">
-    <!-- 引入Font Awesome字体图标样式 http://www.fontawesome.com.cn/v5/-->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/lib/theme/font-awesome.min.css">
-    <!-- 引入vue -->
-    <script src="<%=request.getContextPath()%>/lib/vue.min.js"></script>
-    <!-- 引入ajax -->
-    <script src="<%=request.getContextPath()%>/lib/axios.min.js"></script>
-    <!-- 引入组件库 -->
-    <script src="<%=request.getContextPath()%>/lib/index.js"></script>
-    <![if IE]>
-    <script src="<%=request.getContextPath()%>/lib/polyfill.min.js"></script>
-    <script src="<%=request.getContextPath()%>/lib/compatible.js"></script>
-    <![endif]>
+    <%@ include file="../head.jsp" %>
     <title>用户管理-修改</title>
     <style>
         .el-main {
@@ -95,7 +75,7 @@
         <el-footer>
             <el-button type="primary" size="medium" @click="submit" icon="el-icon-check">
                 确定</el-button>
-            <el-button type="primary" plain size="medium" style="margin-left: 20px" @click="closeTab('用户管理-修改');" icon="el-icon-s-order">关闭
+            <el-button type="primary" plain size="medium" style="margin-left: 20px" @click="isModify ? closeTab('用户管理-修改') : closeTab('用户管理-新增');" icon="el-icon-s-order">关闭
             </el-button>
         </el-footer>
     </el-container>
@@ -185,13 +165,18 @@
                   method: 'post',
                   data: this.user
                 }).then((res) => {
-                  this.$message({
-                    type: 'success',
-                    message: message + '成功！'
-                  }, setTimeout(() => {
-                    this.closeTab('用户管理-'+message);
-                    this.refreshiframe('用户管理');
-                  }, 1000));
+                  console.log(res);
+                  if (res.data.reCorde === 0) {
+                      this.$message({
+                        type: 'success',
+                        message: message + '成功！'
+                      }, setTimeout(() => {
+                        this.closeTab('用户管理-'+message);
+                        this.refreshiframe('用户管理');
+                      }, 1000));
+                  } else {
+                    this.$message.warning(res.data.msg)
+                  }
                 })
               })
             },

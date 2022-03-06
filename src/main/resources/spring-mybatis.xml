@@ -43,7 +43,7 @@
                         <value>
                             helperDialect=mysql
                             reasonable=true
-                            supportMethodsArguments=true
+                            supportMethodsArguments=false
                             params=count=countSql
                             autoRuntimeDialect=true
                         </value>
