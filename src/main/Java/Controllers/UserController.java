@@ -110,4 +110,28 @@ public class UserController {
         userService.deleteAll(list);
         return ApiResult.success();
     }
+
+    /*修改密码*/
+    @RequestMapping("/modifyPassword")
+    @ResponseBody
+    public ApiResult modifyPassword(HttpServletRequest request) {
+        User currentUser = (User) request.getSession().getAttribute("user");
+        String oldPassword = request.getParameter("password");
+        String newPassword = request.getParameter("newPassword");
+        try {
+            User user = userService.find(currentUser);
+            if (!user.getPassword().equals(oldPassword)){
+                return ApiResult.failed("原密码输入错误，请重新输入！");
+            } else if (user.getPassword().equals(newPassword)) {
+                return ApiResult.failed("原密码与新密码相同，请重新输入！");
+            } else {
+                user.setPassword(newPassword);
+                userService.update(user);
+                return ApiResult.success();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ApiResult.failed("系统异常！请联系管理员！");
+        }
+    }
 }

@@ -24,4 +24,6 @@ public interface ChooseCourseMapper {
     List<String> findAllChosenCourses(String userId);
 
     int insertAll(List<ChooseCourse> chooseCourses);
+
+    void checkChooseCourse(Map<String, Object> map);
 }

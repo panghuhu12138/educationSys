@@ -18,6 +18,15 @@ public class Course implements Serializable {
     //非数据库字段
     private String teacherName;
     private String teacherPhone;
+    private Integer studentNum;
+
+    public Integer getStudentNum() {
+        return studentNum;
+    }
+
+    public void setStudentNum(Integer studentNum) {
+        this.studentNum = studentNum;
+    }
 
     public Integer getCourseCredit() {
         return courseCredit;

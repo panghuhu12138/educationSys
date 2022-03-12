@@ -206,22 +206,22 @@
 						<el-row>
 							<el-col :span="24">
 								<el-form-item label="原密码">
-									<el-input v-model="form.old" placeholder="请输入原密码" autocomplete="off" size="medium">
+									<el-input v-model="form.oldPassword" type="password" placeholder="请输入原密码" autocomplete="off" size="medium">
 									</el-input>
 								</el-form-item>
 								<el-form-item label="新密码">
-									<el-input v-model="form.New" placeholder="请输入新密码" autocomplete="off" size="medium">
+									<el-input v-model="form.newPassword" type="password" placeholder="请输入新密码" autocomplete="off" size="medium">
 									</el-input>
 								</el-form-item>
 								<el-form-item label="确认新密码">
-									<el-input v-model="form.confirm" placeholder="请再次输入新密码" autocomplete="off"
+									<el-input v-model="form.rePassword" type="password" placeholder="请再次输入新密码" autocomplete="off"
 										size="medium"></el-input>
 								</el-form-item>
 							</el-col>
 						</el-row>
 					</el-form>
 					<div slot="footer" class="dialog-footer">
-						<el-button type="primary" @click="dialogpassword = false" size="medium">确定</el-button>
+						<el-button type="primary" @click="modifyPassword" size="medium">确定</el-button>
 						<el-button @click="dialogpassword = false" size="medium">关闭</el-button>
 					</div>
 				</el-dialog>
@@ -347,12 +347,13 @@
 				dialogpassword: false,
 				dialogweixin: false,
 				form: {
-					old: '',
-					New: '',
-					confirm: '',
+					oldPassword: '',
+					newPassword: '',
+					rePassword: '',
 					date2: '',
-					wxname: 'weixinxxxxx',
-					ewm: '<%=request.getContextPath()%>/images/ewm.png',
+					wxname: '',
+					wxUrl:'',
+					zfbUrl:'',
 				},
 				formdb: {
 					place: '',
@@ -399,9 +400,112 @@
 						url: '<%=request.getContextPath()%>/static/json/navmenu.json',
 						method: 'get'
 					}).then(function (res) {
-						self.menus = res.data.menus
+						if ('${sessionScope.user.identity}' == 1) {
+							self.menus = [{
+								"name": "教务管理",
+								"id": "1",
+								"iconClass": "fal fa-cabinet-filing",
+								"children": [{
+									"name": "学生选课",
+									"id": "1-1",
+									"url": "/Demo_war_exploded/chooseCourse/toChooseCourseInfo.do"
+								}]
+							}]
+						} else if ('${sessionScope.user.identity}' == 2) {
+							self.menus = [{
+								"name": "教务管理",
+								"id": "1",
+								"iconClass": "fal fa-cabinet-filing",
+								"children": [{
+										"name": "选课管理",
+										"id": "1-3",
+										"url": "/Demo_war_exploded/chooseCourse/toCourseManager.do"
+									}]
+								}]
+						} else if ('${sessionScope.user.identity}' == 3) {
+							self.menus = [{
+								"name": "系统管理",
+								"id": "2",
+								"iconClass": "el-icon-setting",
+								"children": [{
+									"name": "用户管理",
+									"id": "2-1",
+									"url": "/Demo_war_exploded/user/toUserManager.do"
+								}]
+							}]
+						}
 					})
 				},
+
+				/*修改密码*/
+				modifyPassword() {
+					const password = this.form.oldPassword.trim();
+					const newPassword = this.form.newPassword.trim();
+					const reNewPassword = this.form.rePassword.trim();
+					if (password === '') {
+						this.$alert("原密码不能为空！", '提示', {
+							type: 'warning'
+						})
+						return false;
+					}
+					if (newPassword === '') {
+						this.$alert("新密码不能为空！", '提示', {
+							type: 'warning'
+						})
+						return false;
+					}
+					if (reNewPassword === '') {
+						this.$alert("确认密码不能为空！", '提示', {
+							type: 'warning'
+						})
+						return false;
+					}
+					if (newPassword !== reNewPassword) {
+						this.$alert("两次输入的密码不一致", '提示', {
+							type: 'warning'
+						});
+						return false;
+					}
+					this.$confirm('确认修改？', '提示', {
+						confirmButtonText: '确定',
+						cancelButtonText: '取消',
+						type: 'warning'
+					}).then(() => {
+						const self = this;
+						axios({
+							url: '<%=request.getContextPath() %>/user/modifyPassword.do',
+							method: 'post',
+							params: {
+								newPassword: newPassword,
+								password: password
+							}
+						}).then(function (resp) {
+							if (resp.data.reCorde === 0) {
+								self.$message({
+									type: 'success',
+									message: '修改成功！'
+								}, setTimeout(() => {
+									window.top.location.replace("<%=request.getContextPath()%>/login/loginpage.do")
+								}, 1000));
+							} else {
+								self.$message({
+									type: 'error',
+									message: resp.data.msg
+								});
+							}
+						}).catch((err) => {
+							if (err !== 'cancel') {
+								this.$message({
+									type: 'error',
+									message: '页面异常！请联系管理员！'
+								}, setTimeout(() => {
+									window.top.location.replace("<%=request.getContextPath()%>/login/loginpage.do");
+								}, 1000));
+							}
+						});
+					})
+				},
+
 				Refreshiframe: function () {
 					// 通过this.acitveTab传递当前iframe id用于判断刷新当前iframe
 					var iframeid = this.activeTab

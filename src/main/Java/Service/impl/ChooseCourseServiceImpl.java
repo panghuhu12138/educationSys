@@ -2,6 +2,7 @@ package Service.impl;
 
 import Dao.ChooseCourseMapper;
 import Entity.ChooseCourse;
+import Entity.Course;
 import Service.IChooseCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,10 @@ public class ChooseCourseServiceImpl implements IChooseCourseService {
     public int insertAll(List<ChooseCourse> chooseCourses) {
         return chooseCourseMapper.insertAll(chooseCourses);
     }
+
+    @Override
+    public void checkChooseCourse(Map<String, Object> map) {
+        chooseCourseMapper.checkChooseCourse(map);
+    }
+
 }

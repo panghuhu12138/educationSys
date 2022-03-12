@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,10 +32,22 @@ public class ChooseCourseController {
         return "course/chooseCourseInfo";
     }
 
-    /*跳转到选课展示页*/
+    /*跳转到选课页*/
     @RequestMapping("/toChooseCourse")
     public String toChooseCourse() {
         return "/course/chooseCourse";
+    }
+
+    /*跳转到课程管理页*/
+    @RequestMapping("/toCourseManager")
+    public String toCourseManager() {
+        return "/course/courseManager";
+    }
+
+    /*跳转到课程管理页*/
+    @RequestMapping("/toCourseCheck")
+    public String toCourseCheck() {
+        return "/course/courseCheck";
     }
 
     /*获取当前用户的所有选课*/
@@ -71,6 +84,27 @@ public class ChooseCourseController {
     }
 
     /*获取所有课程*/
+    @RequestMapping("/queryAllCourse2")
+    @ResponseBody
+    public ApiResult queryAllCourse2(HttpServletRequest request) {
+        Map<String, Object> params = Util.paramToMapNew(request);
+        User user = (User) request.getSession().getAttribute("user");
+        params.put("teacherId", user.getUserId());
+        List<Course> courseList = iCourseService.findAll2(params);
+        PageInfo page = new PageInfo(courseList);
+        return ApiResult.success(page);
+    }
+
+    /*获取所有课程*/
+    @RequestMapping("/queryAllChooseCourseByCourseId")
+    @ResponseBody
+    public ApiResult queryAllChooseCourseByCourseId(HttpServletRequest request) {
+        Map<String, Object> params = Util.paramToMapNew(request);
+        List<ChooseCourse> courseList = iChooseCourseService.findAll(params);
+        return ApiResult.success(courseList);
+    }
+
+    /*获取所有课程*/
     @RequestMapping("/addChooseCourses")
     @ResponseBody
     public ApiResult addChooseCourses(String ids,HttpServletRequest request) {
@@ -88,6 +122,32 @@ public class ChooseCourseController {
             chooseCourses.add(chooseCourse);
         }
         iChooseCourseService.insertAll(chooseCourses);
+        return ApiResult.success();
+    }
+
+    /*确认或退回学生选课*/
+    @RequestMapping("/checkChooseCourse")
+    @ResponseBody
+    public ApiResult checkChooseCourse(String ids, Integer status, String reason) {
+        List<String> chooseCourseIds = Arrays.asList(ids.split(","));
+        iChooseCourseService.checkChooseCourse(new HashMap<String, Object>(3){{
+            this.put("chooseCourseIds", chooseCourseIds);
+            this.put("status", status);
+            this.put("reason", reason);
+        }});
+        return ApiResult.success();
+    }
+
+
+    /*开课或结课*/
+    @RequestMapping("/updateCourse")
+    @ResponseBody
+    public ApiResult updateCourse(String ids, Integer status) {
+        List<String> courseIds = Arrays.asList(ids.split(","));
+        iCourseService.updateAll(new HashMap<String, Object>(3){{
+            this.put("courseIds", courseIds);
+            this.put("status", status);
+        }});
         return ApiResult.success();
     }
 }

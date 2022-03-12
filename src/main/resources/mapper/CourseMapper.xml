@@ -10,6 +10,7 @@
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="user_name" jdbcType="TINYINT" property="teacherName" />
     <result column="phone" jdbcType="TINYINT" property="teacherPhone" />
+    <result column="student_num" jdbcType="INTEGER" property="studentNum" />
   </resultMap>
   <sql id="Base_Column_List">
     course_id, course_name, course_num, teacher_id, course_credit, status
@@ -20,6 +21,8 @@
     from course
     where course_id = #{courseId,jdbcType=VARCHAR}
   </select>
+
+
     <select id="findAll" resultMap="BaseResultMap" parameterType="Map">
       select
       a.*,
@@ -27,12 +30,10 @@
       b.phone
         from course a
         left join user b on b.user_id = a.teacher_id
-      where a.status in (1,2)
+      <where>
+        a.status = 1
       <if test="courseName != null and courseName != ''">
         and a.course_name like '%${courseName}%'
-      </if>
-      <if test="status != null and status != ''">
-        and a.status = #{status}
       </if>
       <if test="chosenCourseIds != null">
         and a.course_id not in
@@ -40,9 +41,35 @@
           #{chosenCourseId}
         </foreach>
       </if>
-        order by a.course_num
+      </where>
+        order by a.status,a.course_num
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <select id="findAll2" resultMap="BaseResultMap" parameterType="Map">
+    select
+    a.*,
+    b.user_name,
+    IF(a.status = 1, (select count(1) from choose_course c where c.course_id = a.course_id),
+    (select count(1) from choose_course c where c.course_id = a.course_id and c.status = 2)) as student_num
+    from course a
+    left join user b on b.user_id = a.teacher_id
+    <where>
+      <if test="courseName != null and courseName != ''">
+        and a.course_name like '%${courseName}%'
+      </if>
+      <if test="status != null and status != ''">
+        and a.status = #{status}
+      </if>
+      <if test="teacherId != null and teacherId != ''">
+        and a.teacher_id = #{teacherId}
+      </if>
+    </where>
+    order by a.status,a.course_num
+  </select>
+  <select id="queryAllChooseCourseByCourseId" resultType="Entity.Course">
+
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from course
     where course_id = #{courseId,jdbcType=VARCHAR}
   </delete>
@@ -126,5 +153,17 @@
       course_credit = #{courseCredit,jdbcType=TINYINT},
       status = #{status,jdbcType=TINYINT}
     where course_id = #{courseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateAll" parameterType="Map">
+    update course
+    <set>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where course_id in
+    <foreach collection="courseIds" item="courseId" open="(" close=")" separator=",">
+      #{courseId}
+    </foreach>
   </update>
 </mapper>

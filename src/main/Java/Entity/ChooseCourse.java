@@ -39,6 +39,42 @@ public class ChooseCourse implements Serializable {
      * 教师联系电话
      */
     private String teacherPhone;
+    /**
+     * 选课学生名字
+     */
+    private String studentName;
+    /**
+     * 选课学生联系电话
+     */
+    private String studentPhone;
+    /**
+     * 选课学生学号
+     */
+    private String studentNum;
+
+    public String getStudentNum() {
+        return studentNum;
+    }
+
+    public void setStudentNum(String studentNum) {
+        this.studentNum = studentNum;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getStudentPhone() {
+        return studentPhone;
+    }
+
+    public void setStudentPhone(String studentPhone) {
+        this.studentPhone = studentPhone;
+    }
 
     public Integer getStatus() {
         return status;

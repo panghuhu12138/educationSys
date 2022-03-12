@@ -14,6 +14,9 @@
     <result column="course_credit" jdbcType="TINYINT" property="courseCredit" />
     <result column="user_name" jdbcType="VARCHAR" property="teacherName" />
     <result column="phone" jdbcType="VARCHAR" property="teacherPhone" />
+    <result column="student_name" jdbcType="VARCHAR" property="studentName" />
+    <result column="student_phone" jdbcType="VARCHAR" property="studentPhone" />
+    <result column="student_num" jdbcType="VARCHAR" property="studentNum" />
   </resultMap>
   <sql id="Base_Column_List">
     choose_course_id, user_id, course_id, status, reason, grade_id, insert_time
@@ -54,18 +57,32 @@
            b.course_num,
            b.course_credit,
            c.user_name,
-           c.phone
+           c.phone,
+           d.user_name student_name,
+           d.user_num student_num,
+           d.phone student_phone
     from choose_course a
            left join course b on b.course_id = a.course_id
            left join user c on c.user_id = b.teacher_id
-    where a.user_id = #{userId}
-    <if test="courseName != null and courseName != ''">
-      and b.course_name like '%${courseName}%'
-    </if>
-    <if test="status != null and status != ''">
-      and a.status = #{status}
-    </if>
-    order by course_num
+            left join user d on d.user_id = a.user_id
+      <where>
+        <if test="userId != null and userId != ''">
+          and a.user_id = #{userId}
+        </if>
+        <if test="courseId != null and courseId != ''">
+          and a.course_id = #{courseId}
+        </if>
+        <if test="studentName != null and studentName != ''">
+          and d.user_name like '%${studentName}%'
+        </if>
+        <if test="courseName != null and courseName != ''">
+          and b.course_name like '%${courseName}%'
+        </if>
+        <if test="status != null and status != ''">
+          and a.status = #{status}
+        </if>
+      </where>
+    order by a.status,course_num
   </select>
   <select id="findAllChosenCourses" parameterType="String" resultType="java.lang.String">
     select a.course_id
@@ -183,5 +200,20 @@
       grade_id = #{gradeId,jdbcType=VARCHAR},
       insert_time = #{insertTime,jdbcType=TIMESTAMP}
     where choose_course_id = #{chooseCourseId,jdbcType=VARCHAR}
+  </update>
+  <update id="checkChooseCourse" parameterType="Map">
+    update choose_course
+    <set>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where choose_course_id in
+    <foreach collection="chooseCourseIds" item="chooseCourseId" open="(" close=")" separator=",">
+        #{chooseCourseId}
+    </foreach>
   </update>
 </mapper>

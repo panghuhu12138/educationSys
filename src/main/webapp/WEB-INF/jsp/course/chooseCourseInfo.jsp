@@ -193,7 +193,6 @@
           let params = this.formInline;
           params.pageNum = this.pageNum;
           params.pageSize = this.pageSize;
-          console.log(params);
           axios({
             url: domaiUrl + '/chooseCourse/queryAllChooseCourseByUser.do',
             method: 'get',
